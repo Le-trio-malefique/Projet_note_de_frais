@@ -2,7 +2,6 @@
 session_start();
 
 include 'vue/enTete.php';
-
 include 'vue/menu.php';	
 
 if(isset($_POST['ctl']))
