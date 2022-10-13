@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon" style="color: #1A4087;"></span>
     </button>
 
-    <div class="collapse navbar-collapse show" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <?php 
                 if(isset($_SESSION['login'])){
@@ -22,12 +22,12 @@
             <?php
                 }
             ?>
-            <li class="nav-item ml-auto">  
-                <div class="dropdown me-0">
-                    <a class="show" style="margin-right: 0px;"role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true">
+            <li class="nav-item mr-0 ml-auto"> 
+                <div class="dropdown">
+                    <a class="col d-flex justify-content-end" style="margin-right: 0px;"role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i style="font-size : 3em; color: #1A4087;" class="bi bi-person-circle"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-right show" aria-labelledby="dropdownMenuLink">
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                         <?php
                             if(isset($_SESSION['login'])){
                         ?>
