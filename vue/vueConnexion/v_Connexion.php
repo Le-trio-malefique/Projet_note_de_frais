@@ -1,4 +1,4 @@
-<div class="col-lg-4 m-auto">
+<div class="col-lg-3 m-auto p-2 rounded" style="background-color : #fff70!important;">
    <h1 class="text-center mt-3">CONNEXION</h1>
    <form class="fluid-form" action="index.php?ctl=utilisateur&action=connect" method="post">
       <!--<input type="hidden" name="ctl" value="utilisateur">
