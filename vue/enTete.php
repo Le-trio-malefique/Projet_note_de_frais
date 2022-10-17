@@ -16,4 +16,4 @@
    
    </head>
 <body class="h-100">
-<div class="d-flex w-100 h-100 mx-auto flex-column">
+<div class="w-100 h-100">
