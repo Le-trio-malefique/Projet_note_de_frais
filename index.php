@@ -4,9 +4,9 @@ session_start();
 include 'vue/enTete.php';
 include 'vue/menu.php';	
 
-if(isset($_GET['ctl']))
+if(isset($_POST['ctl']))
 {
-	switch($_GET['ctl']){
+	switch($_POST['ctl']){
 
 		case 'Gestionnaire':
 			include 'ctl/ctlGestionnaire';
