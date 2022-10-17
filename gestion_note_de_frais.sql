@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 14 oct. 2022 à 14:57
+-- Généré le : lun. 17 oct. 2022 à 13:38
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -95,7 +95,6 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `Nom` varchar(20) DEFAULT NULL,
   `Prenom` varchar(20) DEFAULT NULL,
   `Mail` varchar(20) DEFAULT NULL,
-  `Login` varchar(20) DEFAULT NULL,
   `Mdp` varchar(20) DEFAULT NULL,
   `Admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Id`,`Mat`)
@@ -105,8 +104,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`Id`, `Mat`, `Nom`, `Prenom`, `Mail`, `Login`, `Mdp`, `Admin`) VALUES
-(1, 6448723, 'Pignion', 'Louis', 'Louis@Pignion.fr', 'login', 'mdp', 1);
+INSERT INTO `utilisateur` (`Id`, `Mat`, `Nom`, `Prenom`, `Mail`, `Mdp`, `Admin`) VALUES
+(1, 6448723, 'Pignion', 'Louis', 'Louis@Pignion.fr', 'mdp', 1);
 
 -- --------------------------------------------------------
 
