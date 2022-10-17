@@ -31,12 +31,24 @@
                             <?php
                                 if(isset($_SESSION['login'])){
                             ?>
-                                <li><a class="dropdown-item" href="index.php?ctl=utilisateur&action=formDeconnect">Deconnexion</a></li>
+                                <li>
+                                    <form action='index.php' method="post"> 
+                                        <input type="hidden" name="ctl" value="utilisateur">
+                                        <input type="hidden" name="action" value="formDeconnect">
+                                        <input type="submit" class="dropdown-item" value="Deconnexion"></input>
+                                    </form>
+                                </li>
                             <?php
                                 }
                                 else{
                             ?>
-                                <li><a class="dropdown-item" href="index.php?ctl=utilisateur&action=formConnect">Connexion</a></li>
+                                <li>
+                                    <form action='index.php' method="post"> 
+                                        <input type="hidden" name="ctl" value="utilisateur">
+                                        <input type="hidden" name="action" value="formConnect">
+                                        <input type="submit" class="dropdown-item" value="Connexion"></input>
+                                    </form>
+                                </li>
                             <?php
                                 }
                             ?>
