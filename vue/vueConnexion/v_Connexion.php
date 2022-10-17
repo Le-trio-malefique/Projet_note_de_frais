@@ -1,4 +1,4 @@
-<div class="col-lg-4 mx-auto rounded border my-auto w-25 shadow" style="color: #1A4087;">
+<div class="col-lg-4 mx-auto rounded border my-auto shadow p-3 ml-3 mr-3" style="color: #1A4087;">
    <h1 class="text-center mt-3">CONNEXION</h1>
    <form class="fluid-form text-center" action="index.php?ctl=utilisateur&action=connect" method="post">
       <!--<input type="hidden" name="ctl" value="utilisateur">
