@@ -10,13 +10,13 @@
                 if(isset($_SESSION['login'])){
             ?>
             <li class="nav-item ml-auto active">
-                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Menu</h3><span class="sr-only">(current)</span></a>
+                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Profil</h3><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ml-auto">
-                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Profil</h3></a>
+                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Saisie</h3></a>
             </li>
             <li class="nav-item ml-auto">
-                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Note de frais</h3></a>
+                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Historique</h3></a>
             </li>
             <?php
                 }
