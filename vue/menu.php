@@ -42,7 +42,7 @@
                     else{
                 ?>
                     <li>
-                        <a class="dropdown-item" href="index.php?ctl=utilisateur&action=formConnect"></a>
+                        <a class="dropdown-item" href="index.php?ctl=utilisateur&action=formConnect">Connexion</a>
                     </li>
                 <?php
                     }
