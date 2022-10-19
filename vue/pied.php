@@ -1,4 +1,5 @@
-    <div class="row p-2 m-0 bg-white border-top fixed-bottom">
+    <!-- FOOTER -->
+    <div class="row p-2 m-0 bg-white border-top">
         <div class = "col-md-6 text-left"> 
             <div class="text-center">
                 © 2022 Institution Saint-Aspais 
