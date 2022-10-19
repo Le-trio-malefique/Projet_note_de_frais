@@ -25,7 +25,7 @@
         </ul>
     </div>
 
-    <div class="mr-0 ml-auto"> 
+    <div class="mr-0"> 
         <div class="dropdown">
             <a class="col d-flex justify-content-end" style="margin-right: 0px;"role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <i style="font-size : 3em; color: #1A4087;" class="bi bi-person-circle"></i>
