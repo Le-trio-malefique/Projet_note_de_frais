@@ -10,53 +10,52 @@
                 if(isset($_SESSION['login'])){
             ?>
             <li class="nav-item ml-auto active">
-                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Menu</h3><span class="sr-only">(current)</span></a>
+                <a href="#profil" class="nav-link p-3" style="color: #1A4087;"><h3>Profil</h3><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ml-auto">
-                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Profil</h3></a>
+                <a href="#saisie" class="nav-link p-3" style="color: #1A4087;"><h3>Saisie</h3></a>
             </li>
             <li class="nav-item ml-auto">
-                <a class="nav-link p-3" style="color: #1A4087;" href="#"><h3>Note de frais</h3></a>
+                <a href="#historique"  class="nav-link p-3" style="color: #1A4087;"><h3>Historique</h3></a>
             </li>
             <?php
                 }
             ?>
-            <li class="nav-item mr-0 ml-auto"> 
-                <div class="dropdown">
-                    <a class="col d-flex justify-content-end" style="margin-right: 0px;"role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i style="font-size : 3em; color: #1A4087;" class="bi bi-person-circle"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                        <?php
-                            if(isset($_SESSION['login'])){
-                        ?>
-                            <li>
-                                <form action='index.php' method="post"> 
-                                    <input type="hidden" name="ctl" value="utilisateur">
-                                    <input type="hidden" name="action" value="formDeconnect">
-                                    <input type="submit" class="dropdown-item" value="Deconnexion"></input>
-                                </form>
-                            </li>
-                        <?php
-                            }
-                            else{
-                        ?>
-                            <li>
-                                <form action='index.php' method="post"> 
-                                    <input type="hidden" name="ctl" value="utilisateur">
-                                    <input type="hidden" name="action" value="formConnect">
-                                    <input type="submit" class="dropdown-item" value="Connexion"></input>
-                                </form>
-                            </li>
-                        <?php
-                            }
-                        ?>
-                        <div class="dropdown-divider">
-                        </div>
-                        <li><a class="dropdown-item" href="index.php?ctl=utilisateur&action=formNew">Inscription</a></li>
-                    </ul>
-                </div>
-            </li>
+            
         </ul>
     </div>
+
+    <li class="nav-item mr-0 ml-auto"> 
+        <div class="dropdown">
+            <a class="col d-flex justify-content-end" style="margin-right: 0px;"role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i style="font-size : 3em; color: #1A4087;" class="bi bi-person-circle"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <?php
+                    if(isset($_SESSION['login'])){
+                ?>
+                    <li>
+                        <form action='index.php?ctl=utilisateur&action=formDeconnect' method="get">
+                            <input type="submit" class="dropdown-item" value="Deconnexion"></input>
+                        </form>
+                    </li>
+                <?php
+                    }
+                    else{
+                ?>
+                    <li>
+                        <form action='index.php?ctl=utilisateur&action=formConnect' method="get">
+                            <input type="submit" class="dropdown-item" value="Connexion"></input>
+                        </form>
+                    </li>
+                <?php
+                    }
+                ?>
+                <div class="dropdown-divider">
+                </div>
+                <li><a class="dropdown-item" href="index.php?ctl=utilisateur&action=formNew">Inscription</a></li>
+            </ul>
+        </div>
+    </li>
+
 </nav>
