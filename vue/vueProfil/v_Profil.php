@@ -1,5 +1,5 @@
-<div class="row h-75 mx-3">
-    <div class="col-lg-4 mx-auto my-auto rounded border shadow p-3 align-middle" style="color: #1A4087;">
+<div class="row h-100 mx-3">
+   <div class="col-lg-4 mx-auto mb-auto rounded border shadow p-3 align-middle" style="color: #1A4087; margin-top : 15vh!important;">
         <div class="ml-5">
             <div class="row">
                 <i style="font-size : 3em; color: #1A4087;" class="bi bi-person-circle"></i>
@@ -23,6 +23,5 @@
             </div>
             <?php } ?>
         </div>
-        
     </div>
 </div>
