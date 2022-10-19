@@ -14,7 +14,6 @@ switch($action){
         break;
 
     case 'connect':
-
         if(isset($_POST['email']) && isset($_POST['password'])){
 
             $result = DbUtilisateur::conectUser($_POST['email'],$_POST['password']);
