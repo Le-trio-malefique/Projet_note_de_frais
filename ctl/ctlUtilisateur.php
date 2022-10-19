@@ -1,7 +1,7 @@
 <?php
 include './model/DbUtilisateur.php';
 
-$action = $_POST['action'];
+$action = $_GET['action'];
 
 switch($action){
     case 'formConnect':
