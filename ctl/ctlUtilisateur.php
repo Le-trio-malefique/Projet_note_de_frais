@@ -13,6 +13,10 @@ switch($action){
         header("Location:index.php");
         break;
 
+    case 'profil':
+        include 'vue/vueProfil/v_Profil.php';
+        break;
+
     case 'connect':
 
         if(isset($_POST['email']) && isset($_POST['password'])){
