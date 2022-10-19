@@ -25,7 +25,7 @@
         </ul>
     </div>
 
-    <li class="nav-item mr-0 ml-auto"> 
+    <div class="mr-0 ml-auto"> 
         <div class="dropdown">
             <a class="col d-flex justify-content-end" style="margin-right: 0px;"role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <i style="font-size : 3em; color: #1A4087;" class="bi bi-person-circle"></i>
@@ -35,18 +35,14 @@
                     if(isset($_SESSION['login'])){
                 ?>
                     <li>
-                        <form action='index.php?ctl=utilisateur&action=formDeconnect' method="get">
-                            <input type="submit" class="dropdown-item" value="Deconnexion"></input>
-                        </form>
+                        <a class="dropdown-item" href="index.php?ctl=utilisateur&action=formDeconnect" >Deconnexion</a>
                     </li>
                 <?php
                     }
                     else{
                 ?>
                     <li>
-                        <form action='index.php?ctl=utilisateur&action=formConnect' method="get">
-                            <input type="submit" class="dropdown-item" value="Connexion"></input>
-                        </form>
+                        <a class="dropdown-item" href="index.php?ctl=utilisateur&action=formConnect"></a>
                     </li>
                 <?php
                     }
@@ -56,6 +52,6 @@
                 <li><a class="dropdown-item" href="index.php?ctl=utilisateur&action=formNew">Inscription</a></li>
             </ul>
         </div>
-    </li>
+    </div>
 
 </nav>
