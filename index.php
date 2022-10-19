@@ -21,6 +21,7 @@ if(isset($_GET['ctl']))
 			break;
 	}
 }
+else{echo "<div class='h-100 w-100'><h1 class='text-center mt-5'>Bienvenue</h1></div>";}
 include 'vue/pied.php';
 
 ?>        				 

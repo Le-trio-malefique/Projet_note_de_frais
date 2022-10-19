@@ -25,6 +25,9 @@ switch($action){
 
             if($result != null){
                 $_SESSION['login'] = $_POST['email'];
+                $_SESSION['nom'] = $result[0]['Nom'];
+                $_SESSION['prenom'] = $result[0]['Prenom'];
+                $_SESSION['matricule'] = $result[0]['Mat'];
                 header("Location:index.php?ctl=notedefrais&action=saisie");
             }
             if($result == null){
