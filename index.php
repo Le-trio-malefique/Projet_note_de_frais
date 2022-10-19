@@ -8,14 +8,17 @@ if(isset($_GET['ctl']))
 {
 	switch($_GET['ctl']){
 
-		case 'Gestionnaire':
+		case 'gestionnaire':
 			include 'ctl/ctlGestionnaire';
 			break;
 
-			case 'utilisateur':
+		case 'utilisateur':
 			include 'ctl/ctlUtilisateur.php';
 			break;
 
+		case 'notedefrais':
+			include 'ctl/ctlNoteDeFrais.php';
+			break;
 	}
 }
 include 'vue/pied.php';

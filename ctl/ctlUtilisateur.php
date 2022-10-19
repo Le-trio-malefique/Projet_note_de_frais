@@ -31,7 +31,7 @@ switch($action){
 
             if($result != null){
                 $_SESSION['login'] = $_POST['email'];
-                header("Location:index.php");
+                header("Location:index.php?ctl=notedefrais&action=saisie");
             }
             if($result == null){
                 header("Location:index.php?ctl=utilisateur&action=formConnect&msg=identifiant ou mots de passe incorrect");
