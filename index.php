@@ -4,18 +4,21 @@ session_start();
 include 'vue/enTete.php';
 include 'vue/menu.php';	
 
-if(isset($_POST['ctl']))
+if(isset($_GET['ctl']))
 {
-	switch($_POST['ctl']){
+	switch($_GET['ctl']){
 
-		case 'Gestionnaire':
+		case 'gestionnaire':
 			include 'ctl/ctlGestionnaire';
 			break;
 
-			case 'utilisateur':
+		case 'utilisateur':
 			include 'ctl/ctlUtilisateur.php';
 			break;
 
+		case 'notedefrais':
+			include 'ctl/ctlNoteDeFrais.php';
+			break;
 	}
 }
 include 'vue/pied.php';
