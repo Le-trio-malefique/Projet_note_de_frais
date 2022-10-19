@@ -13,16 +13,6 @@ switch($action){
         header("Location:index.php");
         break;
 
-    case 'formNew':
-        include 'vue/vueNewUser/v_NewUser.php';
-        break;
-
-    case 'NewUser':
-        if(isset($_POST['email']) && isset($_POST['password'])){
-            DbUtilisateur::newUser($_POST['email'],$_POST['password']);
-        }
-        break;
-
     case 'connect':
 
         if(isset($_POST['email']) && isset($_POST['password'])){
