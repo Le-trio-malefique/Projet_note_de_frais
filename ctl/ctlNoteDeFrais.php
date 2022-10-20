@@ -5,7 +5,7 @@ $action = $_GET['action'];
 
 switch($action){
     case 'lister':
-        DbNoteDeFrais::conectUser($_SESSION['id']);
+        $result = DbNoteDeFrais::conectUser($_SESSION['id']);
         include 'vue/vueSaisie/v_Saisie.php';
         break;
 
