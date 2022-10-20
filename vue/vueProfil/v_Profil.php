@@ -18,7 +18,7 @@
                 <h4 class="my-4">Véhicule : <?php echo $_SESSION['vehicule'] ?></h4>
             </div>
             <?php } else {?>
-            <form class="fluid-form">
+            <form action="index.php?ctl=utilisateur&action=formvehicule" method="POST" class="fluid-form">
                 <input type="submit" value="Saisir véhicule">
             </div>
             <?php } ?>

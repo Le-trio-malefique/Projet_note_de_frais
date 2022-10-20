@@ -40,5 +40,9 @@ switch($action){
     case 'historique':
         include 'vue/vueProfil/v_Historique.php';
         break;
+
+    case 'formvehicule':
+        include 'vue/vueProfil/v_AjoutVehicule.php';
+        break;
     
 }
