@@ -7,7 +7,6 @@ switch($action){
         include 'vue/vueProfil/v_Profil.php';
         break;
     
-
     case 'historique':
         include 'vue/vueProfil/v_Historique.php';
         break;
