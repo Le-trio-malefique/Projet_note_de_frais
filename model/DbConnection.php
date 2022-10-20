@@ -3,7 +3,7 @@ include 'connectPdo.php';
 
 class DbConnection{
 	
-	public static function conectUser($email,$password)
+	public static function connectUser($email,$password)
 	{
 		$sql = "SELECT * FROM `utilisateur` WHERE Mail='$email' AND Mdp='$password'";
 		$objResultat = connectPdo::getObjPdo()->query($sql);

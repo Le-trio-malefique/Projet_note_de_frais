@@ -10,7 +10,7 @@
                 <a href="index.php?ctl=utilisateur&action=profil" class="nav-link p-3" style="color: #1A4087;"><h3>Profil</h3><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ml-auto">
-                <a href="index.php?ctl=notedefrais&action=saisie" class="nav-link p-3" style="color: #1A4087;"><h3>Saisie</h3></a>
+                <a href="index.php?ctl=notedefrais&action=lister" class="nav-link p-3" style="color: #1A4087;"><h3>Saisie</h3></a>
             </li>
             <li class="nav-item ml-auto">
                 <a href="index.php?ctl=utilisateur&action=historique"  class="nav-link p-3" style="color: #1A4087;"><h3>Historique</h3></a>
