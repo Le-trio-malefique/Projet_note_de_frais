@@ -8,11 +8,13 @@
         </div>
         <!-- TEXTE -->
         <?php
-            if(isset($_SESSION['demande'])){
+            if(isset($result)){
         ?>
-        <div>
-            Demande 1 en cours
-        </div>
+        <ul>
+            <li>
+                
+            </li>
+        </ul>
         <?php
             }else{
         ?>
