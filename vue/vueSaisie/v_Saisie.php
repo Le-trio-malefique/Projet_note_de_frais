@@ -1,5 +1,5 @@
 <!-- CARD NEW NOTE DE FRAIS -->
-<div class="row w-100 mx-auto d-flex justify-content-center container-fluid mt-3" style="min-height : 100vh!important;">
+<div class="row w-100 mx-auto d-flex justify-content-center mt-3" style="min-height : 100vh!important;">
     <!-- CARD BOX -->
     <div class="col-md-7 border rounded shadow my-md-5">
         <!-- TITRE -->
