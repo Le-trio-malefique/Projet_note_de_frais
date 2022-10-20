@@ -17,7 +17,7 @@ switch($action){
 
         if(isset($_POST['email']) && isset($_POST['password'])){
 
-            $result = DbUtilisateur::conectUser($_POST['email'],$_POST['password']);
+            $result = DbConnection::conectUser($_POST['email'],$_POST['password']);
 
             if($result != null){
                 $_SESSION['login'] = $_POST['email'];
@@ -27,7 +27,7 @@ switch($action){
                 header("Location:index.php?ctl=notedefrais&action=saisie");
             }
             if($result == null){
-                header("Location:index.php?ctl=utilisateur&action=formConnect&msg=identifiant ou mots de passe incorrect");
+                header("Location:index.php?ctl=Connection&action=formConnect&msg=identifiant ou mots de passe incorrect");
             }
         }
         
