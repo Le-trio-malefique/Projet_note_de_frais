@@ -8,6 +8,10 @@ if(isset($_GET['ctl']))
 {
 	switch($_GET['ctl']){
 
+		case 'connection':
+			include 'ctl/ctlConnection';
+			break;
+
 		case 'gestionnaire':
 			include 'ctl/ctlGestionnaire';
 			break;
