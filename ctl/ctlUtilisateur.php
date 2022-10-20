@@ -1,7 +1,7 @@
 <?php
 include './model/DbUtilisateur.php';
 
-$action = $_POST['action'];
+$action = $_GET['action'];
 
 switch($action){
     case 'formConnect':
@@ -13,14 +13,8 @@ switch($action){
         header("Location:index.php");
         break;
 
-    case 'formNew':
-        include 'vue/vueNewUser/v_NewUser.php';
-        break;
-
-    case 'NewUser':
-        if(isset($_POST['email']) && isset($_POST['password'])){
-            DbUtilisateur::newUser($_POST['email'],$_POST['password']);
-        }
+    case 'profil':
+        include 'vue/vueProfil/v_Profil.php';
         break;
 
     case 'connect':
@@ -31,7 +25,10 @@ switch($action){
 
             if($result != null){
                 $_SESSION['login'] = $_POST['email'];
-                header("Location:index.php");
+                $_SESSION['nom'] = $result[0]['Nom'];
+                $_SESSION['prenom'] = $result[0]['Prenom'];
+                $_SESSION['matricule'] = $result[0]['Mat'];
+                header("Location:index.php?ctl=notedefrais&action=saisie");
             }
             if($result == null){
                 header("Location:index.php?ctl=utilisateur&action=formConnect&msg=identifiant ou mots de passe incorrect");
