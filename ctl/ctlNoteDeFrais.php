@@ -4,15 +4,15 @@ include './model/DbNoteDeFrais.php';
 $action = $_GET['action'];
 
 switch($action){
-    case 'saisie':
+    case 'lister':
         include 'vue/vueSaisie/v_Saisie.php';
         break;
 
     case 'newNote':
-
+        DbConnection::conectUser();
         break;
     
-    case 'saisieNote':
+    case 'saisie':
         
         break;
 }
