@@ -34,14 +34,14 @@
                         if(isset($_SESSION['login'])){
                     ?>
                         <li>
-                            <a class="dropdown-item" href="index.php?ctl=x&action=formDeconnect" >Deconnexion</a>
+                            <a class="dropdown-item" href="index.php?ctl=connection&action=formDeconnect" >Deconnexion</a>
                         </li>
                     <?php
                         }
                         else{
                     ?>
                         <li>
-                            <a class="dropdown-item" href="index.php?ctl=x&action=formConnect">Connexion</a>
+                            <a class="dropdown-item" href="index.php?ctl=connection&action=formConnect">Connexion</a>
                         </li>
                     <?php
                         }

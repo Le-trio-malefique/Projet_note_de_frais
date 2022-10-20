@@ -8,12 +8,12 @@ if(isset($_GET['ctl']))
 {
 	switch($_GET['ctl']){
 
-		case 'x':
-			include 'ctl/ctlConnection';
+		case 'connection':
+			include 'ctl/ctlConnection.php';
 			break;
 
 		case 'gestionnaire':
-			include 'ctl/ctlGestionnaire';
+			include 'ctl/ctlGestionnaire.php';
 			break;
 
 		case 'utilisateur':
