@@ -1,7 +1,7 @@
 <?php
 include 'connectPdo.php';
 
-class DbUtilisateur{
+class DbConnection{
 	
 	public static function conectUser($email,$password)
 	{
