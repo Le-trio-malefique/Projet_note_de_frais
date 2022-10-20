@@ -17,7 +17,7 @@ switch($action){
 
         if(isset($_POST['email']) && isset($_POST['password'])){
 
-            $result = DbConnection::conectUser($_POST['email'],$_POST['password']);
+            $result = DbConnection::connectUser($_POST['email'],$_POST['password']);
 
             if($result != null){
                 $_SESSION['login'] = $_POST['email'];
