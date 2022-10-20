@@ -36,5 +36,9 @@ switch($action){
         }
         
         break;
+
+    case 'historique':
+        include 'vue/vueProfil/v_Historique.php';
+        break;
     
 }
