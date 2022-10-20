@@ -9,26 +9,33 @@
         <!-- TEXTE -->
         <?php
             if(isset($result)){
+                foreach ($result as $row){
+                    echo "<tr>
+                                <td>
+                                    ".$row['Date_ndf']."
+                                </td>
+                                <td>
+                                    ".$row['Montant']."
+                                </td>
+                                <td>
+                                    ".$row['Date_ndf']."
+                                </td>
+                            </tr>";
+                }
+            }
+            else{
+                echo '<div class="row text-center" style="min-height : 70vh!important;">
+                    <div class="mt-5 mx-5">
+                        <h1>
+                            Aucune note de frais enregistré
+                        </h1>
+                    </div>
+                </div>';
+            } 
         ?>
-        <ul>
-            <li>
-                
-            </li>
-        </ul>
-        <?php
-            }else{
-        ?>
-        <div class="row text-center" style="min-height : 70vh!important;">
-            <div class="mt-5 mx-5">
-                <h1>
-                    content
-                </h1>
-            </div>
-        </div>
-        <?php } ?>
         
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-            <a class='p-3 my-auto' href="#"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée une nouvelle note de frais</button></a>
+            <a class='p-3 my-auto' href="index.php?ctl=notedefrais&action=newNote"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée une nouvelle note de frais</button></a>
         </div>
         <!-- BUTTONS 
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
