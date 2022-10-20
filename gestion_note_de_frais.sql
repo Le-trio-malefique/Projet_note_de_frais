@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `gestion_note_de_frais_2`
+-- Base de données : `gestion_note_de_frais`
 --
-CREATE DATABASE IF NOT EXISTS `gestion_note_de_frais_2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `gestion_note_de_frais_2`;
+CREATE DATABASE IF NOT EXISTS `gestion_note_de_frais` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `gestion_note_de_frais`;
 
 -- --------------------------------------------------------
 
