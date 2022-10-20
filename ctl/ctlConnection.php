@@ -24,6 +24,7 @@ switch($action){
                 $_SESSION['nom'] = $result[0]['Nom'];
                 $_SESSION['prenom'] = $result[0]['Prenom'];
                 $_SESSION['matricule'] = $result[0]['Mat'];
+                $_SESSION['id'] = $result[0]['Id'];
                 header("Location:index.php?ctl=notedefrais&action=lister");
             }
             if($result == null){

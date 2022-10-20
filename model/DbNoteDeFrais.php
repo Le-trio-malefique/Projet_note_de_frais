@@ -3,7 +3,7 @@ include 'connectPdo.php';
 
 class DbNoteDeFrais{
 
-    public static function lister()
+    public static function lister($idUser)
 	{
         $sql = "INSERT INTO `note_de_frais` (`Date`, `Id_FC`, `Id_FK`, `Id_Utilisateur`) VALUES (NOW(), NULL, NULL, '".$idUser."')";
 		connectPdo::getObjPdo()->exec($sql);
