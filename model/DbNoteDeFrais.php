@@ -5,7 +5,7 @@ class DbNoteDeFrais{
 
     public static function lister()
 	{
-        $sql = "insert into note_de_frais (Date_ndf, Id_utilisateur) values ( NOW(),'".$idUser."')";
+        $sql = "INSERT INTO `note_de_frais` (`Date`, `Id_FC`, `Id_FK`, `Id_Utilisateur`) VALUES (NOW(), NULL, NULL, '".$idUser."')";
 		connectPdo::getObjPdo()->exec($sql);
     }
 
