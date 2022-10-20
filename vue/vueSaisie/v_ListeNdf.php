@@ -18,7 +18,7 @@
                                     ".$row['Date']."
                                 </td>
                                 <td class='p-3'>
-                                    <a class='btn btn-primary' href='#'>Saisir des frais</a>
+                                    <a class='btn btn-primary' href='index.php?ctl=notedefrais&action=saisie&id=".$row['Id_ndf']."'>Saisir des frais</a>
                                 </td>
                             </tr>";
                 }
