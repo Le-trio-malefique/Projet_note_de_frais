@@ -12,13 +12,10 @@
                 foreach ($result as $row){
                     echo "<tr>
                                 <td>
-                                    ".$row['Date_ndf']."
+                                    ".$row['Date']."
                                 </td>
                                 <td>
-                                    ".$row['Montant']."
-                                </td>
-                                <td>
-                                    ".$row['Date_ndf']."
+                                    
                                 </td>
                             </tr>";
                 }
