@@ -18,12 +18,9 @@
         ?>
         <div class="row text-center" style="min-height : 70vh!important;">
             <div class="mt-5 mx-5">
-                <ul>
-                    <li><p>coucou</p></li>
-                    <li><p>coucou</p></li>
-                    <li><p>coucou</p></li>
-                    <li><p>coucou</p></li>
-                </ul>
+                <h1>
+                    content
+                </h1>
             </div>
         </div>
         <?php } ?>
