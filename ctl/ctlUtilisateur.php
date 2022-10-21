@@ -18,6 +18,7 @@ switch($action){
 
     case 'formajoutvehicule':
         DbProfil::ajoutvehicule($_POST['marque'], $_POST['modele'], $_POST['carburant'],$_POST['cylindre'], 1);
+        
         include 'vue/vueProfil/v_Profil.php';
         break;
 }
