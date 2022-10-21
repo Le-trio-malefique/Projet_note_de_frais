@@ -7,6 +7,12 @@ class DbProfil{
 	{
         $sql = "INSERT INTO `vehicule` (`Marque`, `Modele`, `Carburant`, `Cylindre`, `Id_utilisateur`) VALUES ('".$marque."', '".$modele."', '".$carburant."', '".$cylindre."', '".$id."')";
 		connectPdo::getObjPdo()->exec($sql);
+
+        $sql2 = "select * FROM `vehicule` where `Id_utilisateur` =".$_SESSION['id'];
+		$objResultat = connectPdo::getObjPdo()->query($sql2);
+		$result_vehicule = $objResultat->fetchAll();
+		return $result_vehicule;
+
     }
 	
 }
