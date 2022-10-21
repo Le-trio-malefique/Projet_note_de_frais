@@ -16,6 +16,6 @@ switch($action){
         break;
     
     case 'saisie':
-        
+        include 'vue/vueSaisie/v_Saisie.php';
         break;
 }
