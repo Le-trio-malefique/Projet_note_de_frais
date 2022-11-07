@@ -15,6 +15,12 @@ switch($action){
         include 'vue/vueSaisie/v_ListeNdf.php';
         break;
     
+    case 'supprimer':
+        DbNoteDeFrais::supprimer($_SESSION['id'], $_POST['idNdf']);
+        $result = DbNoteDeFrais::lister($_SESSION['id']);
+        include 'vue/vueSaisie/v_ListeNdf.php';
+        break;
+    
     case 'saisie':
         include 'vue/vueSaisie/v_Saisie.php';
         break;

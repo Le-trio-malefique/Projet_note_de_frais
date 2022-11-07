@@ -16,6 +16,12 @@ class DbNoteDeFrais{
 		$result = $objResultat->fetchAll();
 		return $result;
     }
+
+    public static function supprimer($idUser,$idNdf)
+	{
+        $sql_Delete = "DELETE FROM `note_de_frais` WHERE Id_utilisateur=".$_SESSION['id']." AND Id_ndf=".$idNdf;
+        connectPdo::getObjPdo()->exec($sql_Delete);
+    }
 	
 }
 
