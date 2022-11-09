@@ -10,7 +10,7 @@
         <div class="row d-flex justify-content-center" style="min-height: 80vh!important">
             <div class="col-11 p-5 m-3">
 
-                <form action="index.php?ctl=utilisateur&action=formajoutvehicule" method="post">
+                <form action="index.php?ctl=utilisateur&action=formmodifvehicule" method="post">
                     <!-- MARQUE -->
                     <div class="row p-1">
                         <div class="col-lg-6 text-center">
@@ -36,9 +36,11 @@
                         </div>
                         <div class="col-lg-6">
                             <select name="carburant"class="form-control shadow">
-                                <option value="Carburant 1">Carburant 1</option>
-                                <option value="Carburant 2">Carburant 2</option>
-                                <option value="Carburant 3">Carburant 3</option>
+                                <option value="Diesel"> Diesel </option>
+                                <option <?php if ($_SESSION['vehicule'][2] == "Essence") {echo "selected";}?> value="Essence">Essence</option>
+                                <option <?php if ($_SESSION['vehicule'][2] == "Ethanol") {echo "selected";}?> value="Ethanol">Ethanol</option>
+                                <option <?php if ($_SESSION['vehicule'][2] == "Hydrogène") {echo "selected";}?> value="Hydrogène">Hydrogène</option>
+                                <option <?php if ($_SESSION['vehicule'][2] == "Electrique") {echo "selected";}?> value="Electrique">Electrique</option>
                             </select>
                         </div>
                     </div>
@@ -48,7 +50,7 @@
                             <h4>Cylindre</h4>
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control shadow" type="text" name="cylindre" placeholder="Cylindre" required>
+                            <input class="form-control shadow" type="text" name="cylindre" placeholder="Cylindre" value="<?php echo $_SESSION['vehicule'][3]?>" required>
                         </div>
                     </div>
             </div>
@@ -96,9 +98,11 @@
                         </div>
                         <div class="col-lg-6">
                             <select name="carburant"class="form-control shadow">
-                                <option value="Carburant 1">Carburant 1</option>
-                                <option value="Carburant 2">Carburant 2</option>
-                                <option value="Carburant 3">Carburant 3</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Essence">Essence</option>
+                                <option value="Ethanol">Ethanol</option>
+                                <option value="Hydrogène">Hydrogène</option>
+                                <option value="Electrique">Electrique</option>
                             </select>
                         </div>
                     </div>

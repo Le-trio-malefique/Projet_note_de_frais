@@ -19,7 +19,6 @@ switch($action){
 
             $result = DbConnection::connectUser($_POST['email'],$_POST['password']);
             
-
             if($result != null){
                 $_SESSION['login'] = $_POST['email'];
                 $_SESSION['nom'] = $result[0]['Nom'];
@@ -29,7 +28,7 @@ switch($action){
                 $_SESSION['Admin'] = $result[0]['Admin'];
                 $result_v = DbConnection::getVehicule($result[0]['Id']);
                 if($result_v != null){
-                    $_SESSION['vehicule'] = [$result_v[0]['Marque'], $result_v[0]['Modele']];
+                    $_SESSION['vehicule'] = [$result_v[0]['Marque'], $result_v[0]['Modele'], $result_v[0]['Carburant'], $result_v[0]['Cylindre']];
                 }
                 if($_SESSION['Admin'] == 0){
                     header("Location:index.php?ctl=notedefrais&action=lister");
