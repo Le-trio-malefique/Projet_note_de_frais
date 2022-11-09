@@ -21,7 +21,7 @@
                 </div>
                 <?php if(isset($_SESSION['vehicule'])){ ?>
                 <div class="row">
-                    <h4 class="my-4">Véhicule : <?php echo $_SESSION['vehicule'] ?></h4>
+                    <h4 class="my-4">Véhicule : <?php echo $_SESSION['vehicule'][0]," ", $_SESSION['vehicule'][1] ?> <a href="index.php?ctl=utilisateur&action=formvehicule" class="btn btn-primary">Modifier</a> </h4>
                 </div>
                 <?php } else {?>
                 <form action="index.php?ctl=utilisateur&action=formvehicule" method="POST" class="fluid-form">
