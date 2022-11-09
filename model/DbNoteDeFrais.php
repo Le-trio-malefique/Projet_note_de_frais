@@ -11,7 +11,7 @@ class DbNoteDeFrais{
 
     public static function lister($idUser)
 	{
-        $sql = "SELECT * FROM `note_de_frais` WHERE Id_utilisateur=".$_SESSION['id'];
+        $sql = "SELECT * FROM `note_de_frais` WHERE Id_utilisateur=".$idUser;
 		$objResultat = connectPdo::getObjPdo()->query($sql);
 		$result = $objResultat->fetchAll();
 		return $result;
@@ -19,7 +19,7 @@ class DbNoteDeFrais{
 
     public static function supprimer($idUser,$idNdf)
 	{
-        $sql_Delete = "DELETE FROM `note_de_frais` WHERE Id_utilisateur=".$_SESSION['id']." AND Id_ndf=".$idNdf;
+        $sql_Delete = "DELETE FROM `note_de_frais` WHERE Id_utilisateur=".$idUser." AND Id_ndf=".$idNdf;
         connectPdo::getObjPdo()->exec($sql_Delete);
     }
 	

@@ -18,6 +18,7 @@ switch($action){
         if(isset($_POST['email']) && isset($_POST['password'])){
 
             $result = DbConnection::connectUser($_POST['email'],$_POST['password']);
+            
 
             if($result != null){
                 $_SESSION['login'] = $_POST['email'];
@@ -25,7 +26,10 @@ switch($action){
                 $_SESSION['prenom'] = $result[0]['Prenom'];
                 $_SESSION['matricule'] = $result[0]['Mat'];
                 $_SESSION['id'] = $result[0]['Id'];
-                $_SESSION['vehicule'] = [$result[0]['Marque'], $result[0]['Modele']];
+                $result_v = DbConnection::getVehicule($result[0]['Id']);
+                if($result_v != null){
+                    $_SESSION['vehicule'] = [$result_v[0]['Marque'], $result[0]['Modele']];
+                }
                 header("Location:index.php?ctl=notedefrais&action=lister");
             }
             if($result == null){
