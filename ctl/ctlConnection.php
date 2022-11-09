@@ -25,6 +25,7 @@ switch($action){
                 $_SESSION['prenom'] = $result[0]['Prenom'];
                 $_SESSION['matricule'] = $result[0]['Mat'];
                 $_SESSION['id'] = $result[0]['Id'];
+                $_SESSION['vehicule'] = [$result[0]['Marque'], $result[0]['Modele']];
                 header("Location:index.php?ctl=notedefrais&action=lister");
             }
             if($result == null){
