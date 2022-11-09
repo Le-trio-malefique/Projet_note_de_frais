@@ -25,11 +25,18 @@ switch($action){
                 $_SESSION['prenom'] = $result[0]['Prenom'];
                 $_SESSION['matricule'] = $result[0]['Mat'];
                 $_SESSION['id'] = $result[0]['Id'];
+                $_SESSION['Admin'] = $result[0]['Admin'];
                 $result_v = DbConnection::getVehicule($result[0]['Id']);
                 if($result_v != null){
                     $_SESSION['vehicule'] = [$result_v[0]['Marque'], $result_v[0]['Modele'], $result_v[0]['Carburant'], $result_v[0]['Cylindre']];
                 }
-                header("Location:index.php?ctl=notedefrais&action=lister");
+                if($_SESSION['Admin'] == 0){
+                    header("Location:index.php?ctl=notedefrais&action=lister");
+                }
+                else{ 
+                    header("Location:index.php?ctl=notedefrais&action=lister");
+                }
+                
             }
             if($result == null){
                 header("Location:index.php?ctl=Connection&action=formConnect&msg=identifiant ou mots de passe incorrect");
