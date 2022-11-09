@@ -14,6 +14,12 @@ class DbProfil{
 		return $result_vehicule;
 
     }
+
+	public static function modifiervehicule($marque, $modele, $carburant, $cylindre, $id)
+	{
+		$sql = "UPDATE `vehicule` SET `Marque` = '$marque', `Modele` = 'modele', `Carburant` = '$carburant', `Cylindre` = '$cylindre' WHERE Id_utilisateur = $id";
+		connectPdo::getObjPdo()->exec($sql);
+	}
 	
 }
 
