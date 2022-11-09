@@ -35,7 +35,7 @@ switch($action){
                     header("Location:index.php?ctl=notedefrais&action=lister");
                 }
                 else{ 
-                    header("Location:index.php?ctl=notedefrais&action=lister");
+                    header("Location:index.php?ctl=gestionnaire&action=profilAdmin");
                 }
                 
             }
