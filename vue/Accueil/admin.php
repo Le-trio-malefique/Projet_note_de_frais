@@ -1,9 +1,3 @@
-<?php
-session_start();
-require "../enTete.php";
-require "../menu.php";
-
-?>
 <br>
 <br>
 <div class="container-fluid">
@@ -114,6 +108,3 @@ require "../menu.php";
 </div>
 <br>
 <br>
-<?php
-include '../pied.php';
-?>
