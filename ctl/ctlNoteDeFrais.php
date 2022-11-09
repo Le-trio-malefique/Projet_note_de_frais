@@ -9,6 +9,11 @@ switch($action){
         include 'vue/vueSaisie/v_ListeNdf.php';
         break;
 
+    case 'listeFrais':
+        $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
+        include 'vue/vueSaisie/v_Liste_frais.php';
+        break;
+
     case 'newNote':
         DbNoteDeFrais::newNote($_SESSION['id']);
         $result = DbNoteDeFrais::lister($_SESSION['id']);
