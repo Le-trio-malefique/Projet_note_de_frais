@@ -17,12 +17,8 @@
                                 <td class='p-3'>
                                     ".$row['Date']."
                                 </td>
-                                <td class='p-3 d-flex-lg justify-content-center'>
-                                    <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=saisie&id=".$row['Id_ndf']."'>Saisir des frais</a>
-                                    <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimer' method='post'>
-                                        <input type='hidden' name='idNdf' value='".$row['Id_ndf']."'>
-                                        <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
-                                    </form>
+                                <td class='p-3'>
+                                    <a class='btn btn-primary' href='index.php?ctl=notedefrais&action=saisie&id=".$row['Id_ndf']."'>Saisir des frais</a>
                                 </td>
                             </tr>";
                 }
