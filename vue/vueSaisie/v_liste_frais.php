@@ -15,7 +15,7 @@
                 foreach ($result as $row){
                     echo "<tr>
                                 <td class='p-3'>
-                                    
+                                    <p>".$row['Statut']."</p>
                                 </td>
                                 <td class='p-3 d-flex-lg justify-content-center'>
                                     <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=saisie&id='>Modifier</a>
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-            <a class='p-3 my-auto' href="index.php?ctl=notedefrais&action=newNote"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais classique</button></a>
+            <a class='p-3 my-auto' href="index.php?ctl=notedefrais&action=saisie_fc"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais classique</button></a>
             <a class='p-3 my-auto' href="index.php?ctl=notedefrais&action=newNote"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais kilométrique</button></a>
         </div>
         <!-- BUTTONS 

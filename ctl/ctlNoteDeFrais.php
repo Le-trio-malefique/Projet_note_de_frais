@@ -26,7 +26,7 @@ switch($action){
         include 'vue/vueSaisie/v_ListeNdf.php';
         break;
     
-    case 'saisie':
+    case 'saisie_fc':
         include 'vue/vueSaisie/v_Saisie.php';
         break;
 }
