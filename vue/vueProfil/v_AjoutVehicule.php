@@ -39,7 +39,6 @@
                                 <option value="Diesel"> Diesel </option>
                                 <option <?php if ($_SESSION['vehicule'][2] == "Essence") {echo "selected";}?> value="Essence">Essence</option>
                                 <option <?php if ($_SESSION['vehicule'][2] == "Ethanol") {echo "selected";}?> value="Ethanol">Ethanol</option>
-                                <option <?php if ($_SESSION['vehicule'][2] == "Hydrogène") {echo "selected";}?> value="Hydrogène">Hydrogène</option>
                                 <option <?php if ($_SESSION['vehicule'][2] == "Electrique") {echo "selected";}?> value="Electrique">Electrique</option>
                             </select>
                         </div>
@@ -101,7 +100,6 @@
                                 <option value="Diesel">Diesel</option>
                                 <option value="Essence">Essence</option>
                                 <option value="Ethanol">Ethanol</option>
-                                <option value="Hydrogène">Hydrogène</option>
                                 <option value="Electrique">Electrique</option>
                             </select>
                         </div>
