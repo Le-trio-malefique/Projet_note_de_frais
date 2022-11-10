@@ -1,6 +1,6 @@
 <br>
 <br>
-<div class="container-fluid">
+<div class="container-fluid"  style="min-height : 71vh!important;">
     <div class="row rounded" style="background-color: #fff7f0 ;">
         <table class="table table-striped table-responsive-sm my-5 mx-5">
             <thead>
