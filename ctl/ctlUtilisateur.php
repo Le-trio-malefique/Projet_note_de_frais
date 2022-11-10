@@ -9,6 +9,8 @@ switch($action){
         break;
     
     case 'historique':
+        DbProfil::nbndf();
+        DbProfil::listehistorique();
         include 'vue/vueProfil/v_Historique.php';
         break;
 
