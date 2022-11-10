@@ -19,7 +19,7 @@ class DbNoteDeFrais{
 
     public static function listeFrais($id_ndf)
 	{
-        $sql = "SELECT * FROM `ligne_fc` WHERE Id_ndf = ".$id_ndf;
+        $sql = "SELECT * FROM `ligne` WHERE ligne.Id_ndf = ".$id_ndf;
 		$objResultat = connectPdo::getObjPdo()->query($sql);
 		$result = $objResultat->fetchAll();
 		return $result;
