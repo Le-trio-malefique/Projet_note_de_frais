@@ -19,10 +19,22 @@ switch($action){
         $result = DbNoteDeFrais::lister($_SESSION['id']);
         include 'vue/vueSaisie/v_ListeNdf.php';
         break;
+
+    case 'newFrais':
+        DbNoteDeFrais::newFrais($_POST['Montant'],$_FILES['Justificatif'],$_GET['Id_ndf'],$_POST['Statut'], $_POST['Type'], $_POST['Detail'], $_POST['Date']);
+        $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
+        include 'vue/vueSaisie/v_Liste_frais.php';
+        break;
     
     case 'supprimer':
         DbNoteDeFrais::supprimer($_SESSION['id'], $_POST['idNdf']);
         $result = DbNoteDeFrais::lister($_SESSION['id']);
+        include 'vue/vueSaisie/v_ListeNdf.php';
+        break;
+
+    case 'supprimerFrais':
+        DbNoteDeFrais::supprimerFrais($_POST['Id']);
+        $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
         include 'vue/vueSaisie/v_ListeNdf.php';
         break;
     
