@@ -14,11 +14,6 @@ class DbConnection{
 		
 	}
 
-	public static function newUser($email,$password)
-	{
-		$sql = "insert into utilisateur (Mail, Mdp) values ('".$email."','".$password."')";
-		connectPdo::getObjPdo()->exec($sql);
-	}
 }
 
 ?>

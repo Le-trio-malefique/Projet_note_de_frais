@@ -8,31 +8,33 @@
         </div>
         <!-- TEXTE -->
         <div class="container-fluid text-center mt-5" style="min-height : 70vh!important;">
-            <form class="row justify-content-center d-flex" action="index.php?ctl=notedefrais&action=saisie">
+        <?PHP echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."' method='post' enctype='multipart/form-data'>"; ?>
 
                 <div class="col-lg">
                     <div class="row d-flex form-control mx-auto">
                         <label class="text-left col-lg p-0" for="type">Type </label>
-                        <select class="ml-auto col-lg" name="type">
-                            <option value="">Restaurant</option>
-                            <option value="">Titre de transport</option>
-                            <option value="">Parking</option>
-                            <option value="">Péage</option>
+                        <input type="hidden" name="Statut" value="En attente">
+                        <input type="hidden" name="Type" value="FC">
+                        <select class="ml-auto col-lg" name="Detail">
+                            <option value="Restaurant">Restaurant</option>
+                            <option value="Titre de transport">Titre de transport</option>
+                            <option value="Parking">Parking</option>
+                            <option value="Péage">Péage</option>
                             <option value="">autres</option>
                         </select>
                     </div>
                     <div class="row d-flex form-control mt-5 mx-auto">
-                        <label class="text-left col-lg p-0" for="date">Date </label>
-                        <input class="ml-auto col-lg" type="date" name="date" required>
+                        <label class="text-left col-lg p-0" for="date">Date</label>
+                        <input class="ml-auto col-lg" type="date" name="Date" required>
                     </div>
                     <div class="row d-flex form-control mt-5 mx-auto mb-5">
                         <label class="text-left col-lg p-0" for="montant">Montant </label>
-                        <input class="ml-auto col-lg" type="number" name="montant" placeholder="€" required>
+                        <input class="ml-auto col-lg" type="number" name="Montant" placeholder="€" required>
                     </div>
                 </div>
 
                 <div class="col-lg border" style="min-height : 11vh!important;">
-                    <input class="text-left" type="file" name="file" required>
+                    <input class="text-left" type="file" name="Justificatif" required>
                 </div>
             
         </div>
