@@ -22,13 +22,8 @@ switch($action){
     */
 
     case 'historique':
-<<<<<<< HEAD
         $all_ndf = DbProfil::all_ndf();
         $_SESSION['ndf'] = $all_ndf;
-=======
-        DbProfil::nbndf();
-        DbProfil::listehistorique();
->>>>>>> parent of 8243e11 (model ndf historique)
         include 'vue/vueProfil/v_Historique.php';
         break;
 

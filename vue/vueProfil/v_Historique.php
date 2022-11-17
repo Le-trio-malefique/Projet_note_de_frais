@@ -1,3 +1,12 @@
+<?php 
+print_r($_SESSION['ndf']); 
+foreach ($_SESSION['ndf'] as $id => $idndf) {
+    echo "<br>";
+    echo $idndf[0];
+    echo $id[0]
+}
+
+?>
 <!-- CARD NEW NOTE DE FRAIS -->
 <div class="row w-100 mx-auto d-flex justify-content-center mt-3" style="min-height : 100vh!important;">
     <!-- CARD BOX -->
@@ -24,4 +33,3 @@
         <?php } ?>
     </div>
 </div>
-<?php echo $_SESSION['nb_ndf']; ?>
