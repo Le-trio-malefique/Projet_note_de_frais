@@ -42,27 +42,50 @@
                     </div>
                 </div>
 
-                <div class="col-lg border" style="min-height : 11vh!important;">
+                <div class="col-lg border" style="min-height : 11vh!important;" >
                     <input class="text-left" type="file" name="Justificatif" onchange="previewPicture(this)" value="<?php if(isset($result)){ echo "uploads/".$result[0]['Justificatif'];}?>">
-                    <img src="<?php if(isset($result)){echo "uploads/".$result[0]['Justificatif'];}else{echo"#";} ?>" id="image" class="my-3 img-fluid">
+                    <div id="fichier"></div>
 
                     <script type="text/javascript" >
-                        // L'image img#image
-                        var image = document.getElementById("image");
                         
-                        // La fonction previewPicture
-                        var previewPicture  = function (e) {
+                        let previewPicture  = function (e) {
 
                             // e.files contient un objet FileList
-                            const [picture] = e.files
+                            const [file] = e.files
 
-                            // "picture" est un objet File
-                            if (picture) {
-                                // On change l'URL de l'image
-                                image.src = URL.createObjectURL(picture)
+                            let extension = file.name.split(".").pop()
+
+                            if(extension != "pdf"){
+                                let doc = document.createElement('img')
+                                doc.classList.add('img-fluid')
+                                doc.classList.add('my-3')
+                                // "file" est un objet File
+                                if (file) {
+
+                                    // On change l'URL du fichier
+                                    doc.src = URL.createObjectURL(file)
+                                    let madiv = document.getElementById("fichier")
+                                    madiv.innerHTML=""
+                                    madiv.appendChild(doc)
+                                }
                             }
+                            else{
+                                let doc = document.createElement('iframe')
+                                // "file" est un objet File
+                                if (file) {
+                                    doc.style.cssText += 'min-height: 400px;'
+                                    // On change l'URL du fichier
+                                    doc.src = URL.createObjectURL(file) + "#toolbar=0"
+                                    let madiv = document.getElementById("fichier")
+                                    madiv.innerHTML=""
+                                    madiv.appendChild(doc)
+                                }
+                            }
+                            
+                            
                         } 
                     </script>
+
                 </div>
             
         </div>
