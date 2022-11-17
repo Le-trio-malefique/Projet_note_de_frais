@@ -3,7 +3,7 @@ print_r($_SESSION['ndf']);
 foreach ($_SESSION['ndf'] as $id => $idndf) {
     echo "<br>";
     echo $idndf[0];
-    echo $id[0]
+    echo $id[0];
 }
 
 ?>

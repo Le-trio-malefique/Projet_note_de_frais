@@ -43,9 +43,23 @@
                 </div>
 
                 <div class="col-lg border" style="min-height : 11vh!important;" >
-                    <input class="text-left" type="file" name="Justificatif" onchange="previewPicture(this)" value="<?php if(isset($result)){ echo "uploads/".$result[0]['Justificatif'];}?>">
-                    <div id="fichier"></div>
-
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4"><label for="files" class="btn btn-primary mt-3">Select Files</label></div>
+                        <div class="col-lg-4 my-auto"><p class="m-0" id="nomFichier"><?php if (isset($result)){ echo $result[0]['Justificatif']; }?></p></div>
+                    </div>
+                    <input id="files" class="text-left d-none" type="file" name="Justificatif" onchange="previewPicture(this)" value="<?php if(isset($result)){ echo "uploads/".$result[0]['Justificatif'];}?>" accept=".jpg, .png, .pdf">
+                    <div id="fichier"><?php 
+                    if(isset($result)){
+                        $res = substr($result[0]['Justificatif'], -3);
+                        if($res == "pdf"){
+                            echo "<iframe src='uploads/".$result[0]['Justificatif']."' style='min-height: 400px;'></iframe>";
+                        }
+                        else{
+                            echo "<img src='uploads/".$result[0]['Justificatif']."' class='img-fluid py-3'></img>";
+                        }
+                    }
+                    ?></div>
+                    
                     <script type="text/javascript" >
                         
                         let previewPicture  = function (e) {
@@ -54,6 +68,7 @@
                             const [file] = e.files
 
                             let extension = file.name.split(".").pop()
+                            document.getElementById("nomFichier").innerHTML = file.name
 
                             if(extension != "pdf"){
                                 let doc = document.createElement('img')
