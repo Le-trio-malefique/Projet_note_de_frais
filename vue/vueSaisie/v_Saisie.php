@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="col-lg border" style="min-height : 11vh!important;">
-                    <input class="text-left" type="file" name="Justificatif" required>
+                    <input class="text-left" type="file" name="Justificatif">
                 </div>
             
         </div>
