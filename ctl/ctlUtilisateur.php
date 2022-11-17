@@ -8,10 +8,22 @@ switch($action){
         include 'vue/vueProfil/v_Profil.php';
         break;
     
+    /**
+    * @function all_ndf
+    * @return array tout les id et id_ndf des lignes 
+    *
+    * @param int id
+    * identifiant de l'utilisateur
+    * @return int id de 
+    *
+    * @param int id_ndf
+    * identifiant de la note de frais  
+    * @return array
+    */
+
     case 'historique':
-        $result = DbProfil::id_ndf($_SESSION['id']);
-        
-        DbProfil::listehistorique();
+        $all_ndf = DbProfil::all_ndf();
+        $_SESSION['ndf'] = $all_ndf;
         include 'vue/vueProfil/v_Historique.php';
         break;
 
