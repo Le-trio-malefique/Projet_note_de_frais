@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="col-lg border" style="min-height : 11vh!important;">
-                    <input class="text-left" type="file" name="Justificatif" onchange="previewPicture(this)">
-                    <img src="#" id="image" class="m-4">
+                    <input class="text-left" type="file" name="Justificatif" onchange="previewPicture(this)" value="<?php if(isset($result)){ echo "uploads/".$result[0]['Justificatif'];}?>">
+                    <img src="<?php if(isset($result)){echo "uploads/".$result[0]['Justificatif'];}else{echo"#";} ?>" id="image" class="my-3 img-fluid">
 
                     <script type="text/javascript" >
                         // L'image img#image
