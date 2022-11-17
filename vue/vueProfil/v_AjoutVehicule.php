@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-lg-6">
                             <select name="carburant"class="form-control shadow">
-                                <option value="Diesel"> Diesel </option>
+                                <option <?php if ($_SESSION['vehicule'][2] == "Diesel") {echo "selected";}?> value="Diesel"> Diesel </option>
                                 <option <?php if ($_SESSION['vehicule'][2] == "Essence") {echo "selected";}?> value="Essence">Essence</option>
                                 <option <?php if ($_SESSION['vehicule'][2] == "Ethanol") {echo "selected";}?> value="Ethanol">Ethanol</option>
                                 <option <?php if ($_SESSION['vehicule'][2] == "Electrique") {echo "selected";}?> value="Electrique">Electrique</option>
