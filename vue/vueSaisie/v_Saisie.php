@@ -8,7 +8,16 @@
         </div>
         <!-- TEXTE -->
         <div class="container-fluid text-center mt-5" style="min-height : 70vh!important;">
-        <?PHP echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."' method='post' enctype='multipart/form-data'>"; ?>
+        <?PHP 
+            if (isset($result))
+            {
+                echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."' method='post' enctype='multipart/form-data'>";
+            }
+            else {
+                echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."' method='post' enctype='multipart/form-data'>";
+            }
+             
+        ?>
 
                 <div class="col-lg">
                     <div class="row d-flex form-control mx-auto">
@@ -16,30 +25,49 @@
                         <input type="hidden" name="Statut" value="En attente">
                         <input type="hidden" name="Type" value="FC">
                         <select class="ml-auto col-lg" name="Detail">
-                            <option value="Restaurant">Restaurant</option>
-                            <option value="Titre de transport">Titre de transport</option>
-                            <option value="Parking">Parking</option>
-                            <option value="Péage">Péage</option>
-                            <option value="">autres</option>
+                            <option <?php if(isset($result)){ if($result[0]['Detail'] == 'Restaurant'){echo"selected";}} ?> value="Restaurant">Restaurant</option>
+                            <option <?php if(isset($result)){ if($result[0]['Detail'] == 'Titre de transport'){echo"selected";}} ?> value="Titre de transport">Titre de transport</option>
+                            <option <?php if(isset($result)){ if($result[0]['Detail'] == 'Parking'){echo"selected";}} ?> value="Parking">Parking</option>
+                            <option <?php if(isset($result)){ if($result[0]['Detail'] == 'Péage'){echo"selected";}} ?> value="Péage">Péage</option>
+                            <option <?php if(isset($result)){ if($result[0]['Detail'] != 'Restaurant' && $result[0]['Detail'] != 'Titre de transport' && $result[0]['Detail'] != 'Parking' && $result[0]['Detail'] != 'Péage'){echo"selected";}} ?> value="<?php $result[0]['Detail'] ?>"><?php echo $result[0]['Detail']?></option>
                         </select>
                     </div>
                     <div class="row d-flex form-control mt-5 mx-auto">
                         <label class="text-left col-lg p-0" for="date">Date</label>
-                        <input class="ml-auto col-lg" type="date" name="Date" required>
+                        <input class="ml-auto col-lg" type="date" name="Date" value="<?php if(isset($result)){ echo $result[0]['Date'];} ?>" required>
                     </div>
                     <div class="row d-flex form-control mt-5 mx-auto mb-5">
                         <label class="text-left col-lg p-0" for="montant">Montant </label>
-                        <input class="ml-auto col-lg" type="number" name="Montant" placeholder="€" required>
+                        <input class="ml-auto col-lg" type="number" name="Montant" placeholder="€" value="<?php if(isset($result)){ echo $result[0]['Montant'];} ?>" required>
                     </div>
                 </div>
 
                 <div class="col-lg border" style="min-height : 11vh!important;">
-                    <input class="text-left" type="file" name="Justificatif">
+                    <input class="text-left" type="file" name="Justificatif" onchange="previewPicture(this)">
+                    <img src="#" id="image" class="m-4">
+
+                    <script type="text/javascript" >
+                        // L'image img#image
+                        var image = document.getElementById("image");
+                        
+                        // La fonction previewPicture
+                        var previewPicture  = function (e) {
+
+                            // e.files contient un objet FileList
+                            const [picture] = e.files
+
+                            // "picture" est un objet File
+                            if (picture) {
+                                // On change l'URL de l'image
+                                image.src = URL.createObjectURL(picture)
+                            }
+                        } 
+                    </script>
                 </div>
             
         </div>
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-            <button type="submit" class="btn btn-primary my-auto w-50">Envoyé</button>
+            <button type="submit" class="btn btn-primary my-auto w-50"><?php if(isset($result)){ echo "Modifié";} else { echo"Envoyé";} ?></button>
             </form>
         </div>
         <!-- BUTTONS 
