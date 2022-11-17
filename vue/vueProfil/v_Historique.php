@@ -24,3 +24,4 @@
         <?php } ?>
     </div>
 </div>
+<?php echo $_SESSION['nb_ndf']; ?>

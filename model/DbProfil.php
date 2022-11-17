@@ -21,6 +21,14 @@ class DbProfil{
 		connectPdo::getObjPdo()->exec($sql);
 	}
 
+	public static function all_ndf()
+	{
+		$sql = "SELECT id, id_ndf FROM ligne;"
+		$objResultat = connectPdo::getObjPdo()->query($sql);
+		$result = $objResultat->fetchAll();
+		return $result;
+	}
+
 	public static function id_ndf($id)
 	{
 		$sql = "SELECT note_de_frais.Id_ndf FROM note_de_frais WHERE note_de_frais.Id_Utilisateur = $id;"
