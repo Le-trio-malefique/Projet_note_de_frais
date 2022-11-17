@@ -27,7 +27,7 @@ class DbNoteDeFrais{
                         if (in_array($extension, $allowedExtensions))
                         {
                                 // On peut valider le fichier et le stocker définitivement
-                                move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/' . basename($_FILES['Justificatif']['name']));
+                                move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/'.basename($_FILES['Justificatif']['name']));
                         }
                 }
         }
