@@ -61,6 +61,13 @@ class DbNoteDeFrais{
         $sql_Delete = "DELETE FROM `ligne` WHERE Id =".$id_ligne;
         connectPdo::getObjPdo()->exec($sql_Delete);
     }
+    public static function afficherModifierFrais($id_ligne)
+    {
+        $sql = "SELECT * FROM `ligne` WHERE Id = ".$id_ligne;
+		$objResultat = connectPdo::getObjPdo()->query($sql);
+		$result = $objResultat->fetchAll();
+		return $result;
+    }
 	
 }
 

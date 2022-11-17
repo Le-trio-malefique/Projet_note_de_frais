@@ -18,7 +18,7 @@
                                     <p>".$row['Statut']."</p>
                                 </td>
                                 <td class='p-3 d-flex-lg justify-content-center'>
-                                    <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=saisie&id='>Modifier</a>
+                                    <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=afficherModifierFrais&id=".$row['Id']."'>Modifier</a>
                                     <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimerFrais&Id_ndf=".$_GET['Id_ndf']."' method='post'>
                                         <input type='hidden' name='Id' value='".$row['Id']."'>
                                         <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
