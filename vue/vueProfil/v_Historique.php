@@ -1,9 +1,10 @@
 <?php 
 print_r($_SESSION['ndf']); 
-foreach ($_SESSION['ndf'] as $id => $idndf) {
+foreach ($_SESSION['ndf'] as $key => $idndf) {
     echo "<br>";
     echo $idndf[0];
     echo $id[0];
+    echo $idndf[0],$idndf[1];
 }
 
 ?>
