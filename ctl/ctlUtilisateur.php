@@ -24,9 +24,20 @@ switch($action){
     case 'historique':
         // Récupération de toute les ndf d'un utilisateur
         $all_ndf = DbProfil::all_ndf($_SESSION['id']);
+
         // Boucle pour is_valid note de frais
-        
-        $_SESSION['ndf'] = $all_ndf;
+        $valid_ndf = array();
+        foreach ($all_ndf as $value) {
+            if(DbProfil::is_ndf_valid($value[0])[0] == 1){
+                $valid_ndf[] += $value[0];
+            }
+        }
+
+        $_SESSION['ndf_valid'] = $valid_ndf;
+
+        // Récupération des notes de frais valides
+
+
         include 'vue/vueProfil/v_Historique.php';
         break;
 

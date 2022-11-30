@@ -1,20 +1,20 @@
 <?php
+print_r($_SESSION['ndf_valid']);
+echo "<br>";
 
-print_r($_SESSION['ndf']);
-echo "<br><br>";
-
-foreach ($_SESSION['ndf'] as $key => $value) {
-    print_r(DbProfil::is_ndf_valid($value[0]));
-    echo"<br>";
-    $liste_valid = DbProfil::is_ndf_valid($value[0]);
+$liste_historique = array();
+foreach($_SESSION['ndf_valid'] as $value){
+    echo "<br>";
+    print_r(DbProfil::lister_historique($value));
+    $liste_historique[] += DbProfil::lister_historique($value);
 }
-
+print_r($liste_historique);
 
 ?>
 <!-- CARD NEW NOTE DE FRAIS -->
 <div class="row w-100 mx-auto d-flex justify-content-center mt-3" style="min-height : 100vh!important;">
     <!-- CARD BOX -->
-    <div class="col-md-7    border rounded shadow my-md-5">
+    <div class="col-md-7 border rounded shadow my-md-5">
         <!-- TITRE -->
         <div class="row border" style="min-height : 11vh!important;">
             <h4 class="text-left my-auto p-2 ml-3">Historique</h4>
