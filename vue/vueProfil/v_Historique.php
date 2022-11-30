@@ -1,9 +1,14 @@
-<?php 
-print_r($_SESSION['ndf']); 
-foreach ($_SESSION['ndf'] as $key => $idndf) {
-    echo "<br>";
-    echo $idndf[0],$idndf[1];
+<?php
+
+print_r($_SESSION['ndf']);
+echo "<br><br>";
+
+foreach ($_SESSION['ndf'] as $key => $value) {
+    print_r(DbProfil::is_ndf_valid($value[0]));
+    echo"<br>";
+    $liste_valid = DbProfil::is_ndf_valid($value[0]);
 }
+
 
 ?>
 <!-- CARD NEW NOTE DE FRAIS -->

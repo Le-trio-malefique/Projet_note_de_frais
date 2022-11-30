@@ -21,18 +21,20 @@ class DbProfil{
 		connectPdo::getObjPdo()->exec($sql);
 	}
 
-	public static function all_ndf()
+	public static function all_ndf($id_utilisateur)
 	{
-		$sql = "SELECT id, id_ndf FROM ligne, WHERE id;";
+		$sql = "SELECT Id_ndf FROM note_de_frais WHERE Id_Utilisateur = $id_utilisateur;";
 		$objResultat = connectPdo::getObjPdo()->query($sql);
 		$result = $objResultat->fetchAll();
 		return $result;
 	}
 
-	public static function is_ndf_valid($id_ligne)
+	public static function is_ndf_valid($id_ndf)
 	{
-		$sql = "SELECT IF( (SELECT COUNT(ligne.$id) FROM ligne WHERE ligne.Statut != 'En Attente') = (SELECT COUNT(ligne.$id) FROM ligne),(SELECT DISTINCT ligne.id_ndf FROM ligne), '')";
-
+		$sql = "SELECT IF(COUNT(*)>0 OR (SELECT count(*) from ligne AS ligne_sub WHERE ligne_sub.Id_ndf=ligne.Id_ndf)=0,0,1) AS is_valid FROM ligne WHERE ligne.Statut='En Attente' AND ligne.Id_ndf=$id_ndf";
+		$objResultat = connectPdo::getObjPdo()->query($sql);
+		$result = $objResultat->fetchAll();
+		return $result;
 	}
 }
 
