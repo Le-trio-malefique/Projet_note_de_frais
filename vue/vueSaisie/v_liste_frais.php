@@ -6,6 +6,7 @@
         <div class="row border" style="min-height : 11vh!important;">
             <h4 class="text-left my-auto p-2 ml-3">Note de frais / Frais</h4>
         </div>
+
         <!-- TEXTE -->
         <div class="row text-center" style="min-height : 70vh!important;">
             <div class="mt-5 mx-5 w-100">
@@ -40,6 +41,7 @@
             <?php echo"<a class='p-3 my-auto' href='index.php?ctl=notedefrais&action=saisie_fc&Id_ndf=".$_GET['Id_ndf']."'><button type='button' class='btn btn-primary'><i class='bi bi-plus-circle'></i> &nbsp Crée un frais classique</button></a>" ?>
             <a class='p-3 my-auto' href="index.php?ctl=notedefrais&action=newNote"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais kilométrique</button></a>
         </div>
+
         <!-- BUTTONS 
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
             <div class="col-lg-6 p-3 my-auto"> 
