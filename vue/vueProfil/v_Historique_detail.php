@@ -1,3 +1,8 @@
+<!-- RETOUR -->
+<div class="pt-3 pl-5">
+    <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+</div>
+
 <!-- CARD NEW NOTE DE FRAIS -->
 <div class="row w-100 mx-auto d-flex justify-content-center mt-3" style="min-height : 100vh!important;">
     <!-- CARD BOX -->
