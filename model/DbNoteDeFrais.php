@@ -18,16 +18,15 @@ class DbNoteDeFrais{
         if (isset($_FILES['Justificatif']) && $_FILES['Justificatif']['error'] == 0)
         {
                 // Testons si le fichier n'est pas trop gros
-                if ($_FILES['Justificatif']['size'] <= 1000000)
+                if ($_FILES['Justificatif']['size'] <= 1000000000000)
                 {
                         // Testons si l'extension est autorisée
                         $fileInfo = pathinfo($_FILES['Justificatif']['name']);
                         $extension = $fileInfo['extension'];
-                        $allowedExtensions = ['jpg', 'jpeg', 'pdf', 'png'];
-                        if (in_array($extension, $allowedExtensions))
-                        {
-                                // On peut valider le fichier et le stocker définitivement
-                                move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/'.basename($_FILES['Justificatif']['name']));
+                        $allowedExtensions = ['jpg', 'jpeg', 'pdf', 'png', 'PDF'];
+                        if (in_array($extension, $allowedExtensions)){
+                            // On peut valider le fichier et le stocker définitivement
+                            move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/'.basename($_FILES['Justificatif']['name']));
                         }
                 }
         }

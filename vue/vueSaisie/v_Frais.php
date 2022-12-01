@@ -7,6 +7,7 @@
             <h4 class="text-left my-auto p-2 ml-3">Note de frais</h4>
         </div>
         <!-- TEXTE -->
+
         <div class="container-fluid text-center mt-5" style="min-height : 70vh!important;">
         <?PHP 
             if (isset($result))
@@ -29,7 +30,7 @@
                             <option <?php if(isset($result)){ if($result[0]['Detail'] == 'Titre de transport'){echo"selected";}} ?> value="Titre de transport">Titre de transport</option>
                             <option <?php if(isset($result)){ if($result[0]['Detail'] == 'Parking'){echo"selected";}} ?> value="Parking">Parking</option>
                             <option <?php if(isset($result)){ if($result[0]['Detail'] == 'Péage'){echo"selected";}} ?> value="Péage">Péage</option>
-                            <option <?php if(isset($result)){ if($result[0]['Detail'] != 'Restaurant' && $result[0]['Detail'] != 'Titre de transport' && $result[0]['Detail'] != 'Parking' && $result[0]['Detail'] != 'Péage'){echo"selected";}} ?> value="<?php $result[0]['Detail'] ?>"><?php echo $result[0]['Detail']?></option>
+                            <option <?php if(isset($result)){ if($result[0]['Detail'] != 'Restaurant' && $result[0]['Detail'] != 'Titre de transport' && $result[0]['Detail'] != 'Parking' && $result[0]['Detail'] != 'Péage'){echo"selected";}} ?> value="<?php if(isset($result[0]['Detail'])){$result[0]['Detail'];}else{"autre";} ?>"><?php if(isset($result[0]['Detail'])){echo $result[0]['Detail'];}else{echo "autre";}?></option>
                         </select>
                     </div>
                     <div class="row d-flex form-control mt-5 mx-auto">
@@ -47,11 +48,12 @@
                         <div class="col-lg-4"><label for="files" class="btn btn-primary mt-3">Select Files</label></div>
                         <div class="col-lg-4 my-auto"><p class="m-0" id="nomFichier"><?php if (isset($result)){ echo $result[0]['Justificatif']; }?></p></div>
                     </div>
-                    <input id="files" class="text-left d-none" type="file" name="Justificatif" onchange="previewPicture(this)" value="<?php if(isset($result)){ echo "uploads/".$result[0]['Justificatif'];}?>" accept=".jpg, .png, .pdf">
+                    <input id="files" class="text-left d-none" type="file" name="Justificatif" onchange="previewPicture(this)" value="<?php if(isset($result)){ echo "uploads/".$result[0]['Justificatif'];}?>" accept=".jpg, .png, .pdf , .PDF">
                     <div id="fichier"><?php 
+                    
                     if(isset($result)){
                         $res = substr($result[0]['Justificatif'], -3);
-                        if($res == "pdf"){
+                        if($res == "pdf" || $res == "PDF"){
                             echo "<iframe src='uploads/".$result[0]['Justificatif']."' style='min-height: 400px;'></iframe>";
                         }
                         else{
@@ -61,7 +63,7 @@
                     ?></div>
                     
                     <script type="text/javascript" >
-                        
+
                         let previewPicture  = function (e) {
 
                             // e.files contient un objet FileList
@@ -105,7 +107,7 @@
             
         </div>
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-            <button type="submit" class="btn btn-primary my-auto w-50"><?php if(isset($result)){ echo "Modifié";} else { echo"Envoyé";} ?></button>
+            <button type="submit" class="btn btn-primary my-auto w-50" onclick='loader()'><?php if(isset($result)){ echo "Modifié";} else { echo"Envoyé";} ?></button>
             </form>
         </div>
         <!-- BUTTONS 

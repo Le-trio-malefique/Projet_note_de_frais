@@ -70,11 +70,14 @@ switch($action){
 
     case 'afficherModifierFrais':
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
-        include 'vue/vueSaisie/v_Saisie.php';
+        include 'vue/vueSaisie/v_Frais.php';
         break;
     
     case 'modifierFrais':
-        include 'vue/vueSaisie/v_liste_frais.php';
+        //ajout action de modification
+
+        $result = DbNoteDeFrais::lister($_SESSION['id']);
+        include 'vue/vueSaisie/v_ListeNdf.php';
         break;
 
     case 'supprimerFrais':
@@ -84,6 +87,6 @@ switch($action){
         break;
     
     case 'saisie_fc':
-        include 'vue/vueSaisie/v_Saisie.php';
+        include 'vue/vueSaisie/v_Frais.php';
         break;
 }
