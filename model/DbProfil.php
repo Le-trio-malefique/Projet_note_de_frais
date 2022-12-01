@@ -42,7 +42,7 @@ class DbProfil{
 	{
         $sql = "SELECT * FROM note_de_frais WHERE Id_ndf = $id_ndf;";
 		$objResultat = connectPdo::getObjPdo()->query($sql);
-		$result = $objResultat->fetchAll();
+		$result = $objResultat->fetch();
 		return $result;
     }
 }

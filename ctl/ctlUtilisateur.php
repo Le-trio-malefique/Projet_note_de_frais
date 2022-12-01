@@ -8,7 +8,8 @@ switch($action){
         include 'vue/vueProfil/v_Profil.php';
         break;
     
-    /**
+    /**-----------------------HISTORIQUE----------------*/
+    /* 
     * @function all_ndf
     * @return array tout les id et id_ndf des lignes 
     *
@@ -33,10 +34,10 @@ switch($action){
             }
         }
 
-        $_SESSION['ndf_valid'] = $valid_ndf;
-
-        // Récupération des notes de frais valides
-
+        //Function get_info_ndf
+        function get_info_ndf($id_ndf){
+            return DbProfil::lister_historique($id_ndf);
+        }
 
         include 'vue/vueProfil/v_Historique.php';
         break;
