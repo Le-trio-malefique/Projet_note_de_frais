@@ -21,6 +21,7 @@ class DbProfil{
 		connectPdo::getObjPdo()->exec($sql);
 	}
 
+	// HISTORIQUE
 	public static function all_ndf($id_utilisateur)
 	{
 		$sql = "SELECT Id_ndf FROM note_de_frais WHERE Id_Utilisateur = $id_utilisateur;";
@@ -33,9 +34,17 @@ class DbProfil{
 	{
 		$sql = "SELECT IF(COUNT(*)>0 OR (SELECT count(*) from ligne AS ligne_sub WHERE ligne_sub.Id_ndf=ligne.Id_ndf)=0,0,1) AS is_valid FROM ligne WHERE ligne.Statut='En Attente' AND ligne.Id_ndf=$id_ndf";
 		$objResultat = connectPdo::getObjPdo()->query($sql);
-		$result = $objResultat->fetchAll();
+		$result = $objResultat->fetch();
 		return $result;
 	}
+
+	public static function lister_historique($id_ndf)
+	{
+        $sql = "SELECT * FROM note_de_frais WHERE Id_ndf = $id_ndf;";
+		$objResultat = connectPdo::getObjPdo()->query($sql);
+		$result = $objResultat->fetch();
+		return $result;
+    }
 }
 
 ?>
