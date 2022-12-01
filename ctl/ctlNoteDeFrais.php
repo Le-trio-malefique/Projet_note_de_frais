@@ -49,7 +49,11 @@ switch($action){
     */
     case 'listeFrais':
         $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
-        include 'vue/vueSaisie/v_liste_frais.php';
+        if (isset($_GET['vue'])) {
+            include 'vue/vueProfil/v_Historique_liste_frais.php';
+        }else{
+            include 'vue/vueSaisie/v_liste_frais.php';
+        }
         break;
     /**
      * @param int Montant : Valeur en euro
@@ -70,7 +74,11 @@ switch($action){
 
     case 'afficherModifierFrais':
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
-        include 'vue/vueSaisie/v_Frais.php';
+        if (isset($_GET['vue'])) {
+            include 'vue/vueProfil/v_Historique_detail.php';
+        }else {
+            include 'vue/vueSaisie/v_Saisie.php';
+        }
         break;
     
     case 'modifierFrais':
