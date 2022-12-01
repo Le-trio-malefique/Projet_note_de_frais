@@ -48,50 +48,7 @@
                         }
                     }
                     ?></div>
-                    
-                    <script type="text/javascript" >
-                        
-                        let previewPicture  = function (e) {
-
-                            // e.files contient un objet FileList
-                            const [file] = e.files
-
-                            let extension = file.name.split(".").pop()
-                            document.getElementById("nomFichier").innerHTML = file.name
-
-                            if(extension != "pdf"){
-                                let doc = document.createElement('img')
-                                doc.classList.add('img-fluid')
-                                doc.classList.add('my-3')
-                                // "file" est un objet File
-                                if (file) {
-
-                                    // On change l'URL du fichier
-                                    doc.src = URL.createObjectURL(file)
-                                    let madiv = document.getElementById("fichier")
-                                    madiv.innerHTML=""
-                                    madiv.appendChild(doc)
-                                }
-                            }
-                            else{
-                                let doc = document.createElement('iframe')
-                                // "file" est un objet File
-                                if (file) {
-                                    doc.style.cssText += 'min-height: 400px;'
-                                    // On change l'URL du fichier
-                                    doc.src = URL.createObjectURL(file) + "#toolbar=0"
-                                    let madiv = document.getElementById("fichier")
-                                    madiv.innerHTML=""
-                                    madiv.appendChild(doc)
-                                }
-                            }
-                            
-                            
-                        } 
-                    </script>
-
                 </div>
-            
         </div>
     </div>
 </div>
