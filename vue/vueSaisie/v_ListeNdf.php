@@ -39,14 +39,5 @@
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
             <a class='p-3 my-auto' href="index.php?ctl=notedefrais&action=newNote"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée une nouvelle note de frais</button></a>
         </div>
-        <!-- BUTTONS 
-        <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-            <div class="col-lg-6 p-3 my-auto"> 
-                <button type="button" class="btn btn-primary" href="https://google.fr"><i class="bi bi-plus-circle"></i> &nbsp Nouvelle note de frais 1</button>
-            </div>
-            <div class="col-lg-6 p-3 my-auto">
-                <button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Nouvelle note de frais 2</button>
-            </div>
-        </div>-->
     </div>
 </div>
