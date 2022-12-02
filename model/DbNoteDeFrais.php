@@ -2,6 +2,50 @@
 include 'connectPdo.php';
 
 class DbNoteDeFrais{
+    /**
+     * HISTORIQUE
+     */
+    public static function list_ndf(){ // rentrer en paramètre le 0 ou 1
+        // Function all_ndf
+        $all_ndf = DbNoteDeFrais::all_ndf($_SESSION['id']);
+        // Function is_ndf_valid
+        $valid_ndf = array();
+        foreach ($all_ndf as $id_ndf) {
+            if(DbNoteDeFrais::is_ndf_valid($id_ndf[0])[0] == 0){ // <----passer en param d'entrée 
+                $valid_ndf[] += $id_ndf[0];
+            }
+        }
+        return $valid_ndf;
+    }
+    
+    public static function all_ndf($id_utilisateur)
+    {
+        $sql = "SELECT Id_ndf FROM note_de_frais WHERE Id_Utilisateur = $id_utilisateur;";
+        $objResultat = connectPdo::getObjPdo()->query($sql);
+        $result = $objResultat->fetchAll();
+        return $result;
+    }
+
+    public static function is_ndf_valid($id_ndf)
+    {
+        $sql = "SELECT IF(COUNT(*)>0 OR (SELECT count(*) from ligne AS ligne_sub WHERE ligne_sub.Id_ndf=ligne.Id_ndf)=0,0,1) AS is_valid FROM ligne WHERE ligne.Statut='En Attente' AND ligne.Id_ndf=$id_ndf";
+        $objResultat = connectPdo::getObjPdo()->query($sql);
+        $result = $objResultat->fetch();
+        return $result;
+    }
+
+    public static function lister_historique($id_ndf)
+    {
+        $sql = "SELECT * FROM note_de_frais WHERE Id_ndf = $id_ndf;";
+        $objResultat = connectPdo::getObjPdo()->query($sql);
+        $result = $objResultat->fetch();
+        return $result;
+    }
+
+    /**
+     * FIN HISTORIQUE
+     */
+
 
     public static function newNote($idUser)
 	{
