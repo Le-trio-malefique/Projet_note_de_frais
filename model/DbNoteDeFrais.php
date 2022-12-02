@@ -55,7 +55,7 @@ class DbNoteDeFrais{
 
     public static function newFrais($Montant, $justificatif, $id_ndf, $Statut, $Type, $Detail, $Date)
     {
-        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`) VALUES (NULL,'$Montant', '".$_FILES['Justificatif']['name']."', $id_ndf, '$Statut', '$Type', '$Detail', '$Date')";
+        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`) VALUES (NULL,'$Montant', '".$id_ndf."_".$Detail."_".$_FILES['Justificatif']['name']."', $id_ndf, '$Statut', '$Type', '$Detail', '$Date')";
 		connectPdo::getObjPdo()->exec($sql);
         
         // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
@@ -69,8 +69,23 @@ class DbNoteDeFrais{
                         $extension = $fileInfo['extension'];
                         $allowedExtensions = ['jpg', 'jpeg', 'pdf', 'png', 'PDF'];
                         if (in_array($extension, $allowedExtensions)){
+                            
+                            /*echo "<div class='justify-content-center d-flex pt-5'>
+                                    <div class='card bg-success' style='min-width : 50vw;'>
+                                        <h3 class='text-center text-white'>Envoyé avec succès</h3>
+                                    </div>
+                                </div>";*/
+
                             // On peut valider le fichier et le stocker définitivement
-                            move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/'.basename($_FILES['Justificatif']['name']));
+                            move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/'.basename($id_ndf."_".$Detail."_".$_FILES['Justificatif']['name']));
+                            sleep(3);
+                            echo "<script>
+
+                                        document.getElementById('1').className = 'loader fadeOut';
+                                        document.getElementById('2').className = '';
+                                        document.getElementById('3').textContent = 'Envoyé avec succès';
+                            
+                                    </script>";
                         }
                 }
         }
