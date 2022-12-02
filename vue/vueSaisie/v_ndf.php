@@ -4,7 +4,7 @@
     <div class="col-md-7 border rounded shadow my-md-5">
         <!-- TITRE -->
         <div class="row border" style="min-height : 11vh!important;">
-            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'listeFrais'){ echo'Note de frais';} if($_GET['action'] == 'lister'){ echo '';}?></h4>
+            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';}?></h4>
         </div>
 
         
@@ -66,17 +66,21 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
     echo '<div class="row text-center" style="min-height : 70vh!important;">
                 <div class="mt-5 mx-5 w-100">';
 
-                if(isset($result)){
+                if(isset($valid_ndf)){
                     echo "<table class='table-striped w-100'>";
-                    foreach ($result as $row){
+                    foreach ($valid_ndf as $id_ndf){
+                        $ndf = get_info_ndf($id_ndf);
                         echo "<tr>
                                     <td class='p-3'>
-                                        ".$row['Date']."
+                                        ".$ndf['Mission']."
+                                    </td>
+                                    <td class='p-3'>
+                                        ".$ndf['Date']."
                                     </td>
                                     <td class='p-3 d-flex-lg justify-content-center'>
-                                        <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=listeFrais&Id_ndf=".$row['Id_ndf']."'>Saisir des frais</a>
+                                        <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=listeFrais&Id_ndf=".$ndf['Id_ndf']."'>Saisir des frais</a>
                                         <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimer' method='post'>
-                                            <input type='hidden' name='idNdf' value='".$row['Id_ndf']."'>
+                                            <input type='hidden' name='idNdf' value='".$ndf['Id_ndf']."'>
                                             <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
                                         </form>
                                     </td>
