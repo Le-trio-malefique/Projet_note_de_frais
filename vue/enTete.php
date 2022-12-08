@@ -24,6 +24,5 @@
 
 
 <body class="h-100">
-<div id="body">
 
    
