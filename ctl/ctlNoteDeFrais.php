@@ -16,10 +16,10 @@ switch($action){
 
         // Function get_info_ndf
         function get_info_ndf($id_ndf){
-            return DbNoteDeFrais::lister_historique($id_ndf);
+            return DbNoteDeFrais::lister($id_ndf);
         }
 
-        include 'vue/vueSaisie/v_ListeNdf.php';
+        include 'vue/vueSaisie/v_ndf.php';
     break;
 
     /** 
@@ -35,9 +35,9 @@ switch($action){
 
         // Function get_info_ndf
         function get_info_ndf($id_ndf){
-            return DbNoteDeFrais::lister_historique($id_ndf);
+            return DbNoteDeFrais::lister($id_ndf);
         }
-        include 'vue/vueSaisie/v_ListeNdf.php';
+        include 'vue/vueSaisie/v_ndf.php';
     break;
 
     /** 
@@ -50,7 +50,14 @@ switch($action){
     */
     case 'supprimer':
         DbNoteDeFrais::supprimer($_SESSION['id'], $_POST['idNdf']);
-        $result = DbNoteDeFrais::lister($_SESSION['id']);
+        
+        $valid_ndf = DbNoteDeFrais::list_ndf();
+
+        // Function get_info_ndf
+        function get_info_ndf($id_ndf){
+            return DbNoteDeFrais::lister($id_ndf);
+        }
+
         include 'vue/vueSaisie/v_ndf.php';
     break;
 

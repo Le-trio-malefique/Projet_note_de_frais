@@ -34,7 +34,7 @@ class DbNoteDeFrais{
         return $result;
     }
 
-    public static function lister_historique($id_ndf)
+    public static function lister($id_ndf)
     {
         $sql = "SELECT * FROM note_de_frais WHERE Id_ndf = $id_ndf;";
         $objResultat = connectPdo::getObjPdo()->query($sql);
@@ -92,13 +92,14 @@ class DbNoteDeFrais{
         
     }
 
+    /*
     public static function lister($idUser)
 	{
         $sql = "SELECT * FROM `note_de_frais` WHERE Id_utilisateur=".$idUser;
 		$objResultat = connectPdo::getObjPdo()->query($sql);
 		$result = $objResultat->fetchAll();
 		return $result;
-    }
+    }*/
 
     public static function listeFrais($id_ndf)
 	{
