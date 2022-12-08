@@ -1,7 +1,18 @@
+<?php
+    if($_GET['action'] != 'lister'){
+        echo'
+        <!-- RETOUR -->
+        <div class="row pt-4">
+            <div class="col-md-6 text-center">
+                <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+            </div>
+        </div>';
+    } 
+?>
 <!-- CARD NEW NOTE DE FRAIS -->
 <div class="row w-100 mx-auto d-flex justify-content-center mt-3" style="min-height : 100vh!important;">
     <!-- CARD BOX -->
-    <div class="col-md-7 border rounded shadow my-md-5">
+    <div class="col-md-7 border rounded shadow my-md-2">
         <!-- TITRE -->
         <div class="row border" style="min-height : 11vh!important;">
             <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';}?></h4>
@@ -13,7 +24,9 @@
 //Liste frais
 
 if($_GET['action'] == 'listeFrais'){
-    echo'<div class="row text-center" style="min-height : 70vh!important;">
+    echo'
+    
+    <div class="row text-center" style="min-height : 70vh!important;">
         <div class="mt-5 mx-5 w-100">';
 
             if(isset($result)){
