@@ -19,14 +19,14 @@
                     </a>
                 </li>
                 <li class="nav-item ml-auto">
-                    <a href="index.php?ctl=utilisateur&action=historique" class="nav-link p-3" style="color: #1A4087;">
+                    <a href="index.php?ctl=notedefrais&action=lister" class="nav-link p-3" style="color: #1A4087;">
                         <h3>Historique</h3>
                     </a>
                 </li>
             <?php
             } elseif(isset($_SESSION['login']) && $_SESSION['Admin'] == 1) { ?>
                 <li class="nav-item ml-auto">
-                    <a href="index.php?ctl=utilisateur&action=historique" class="nav-link p-3" style="color: #1A4087;">
+                    <a href="index.php?ctl=notedefrais&action=lister" class="nav-link p-3" style="color: #1A4087;">
                         <h3>Historique</h3>
                     </a>
                 </li>

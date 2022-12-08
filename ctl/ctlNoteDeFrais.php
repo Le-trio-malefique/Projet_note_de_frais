@@ -18,8 +18,13 @@ switch($action){
         function get_info_ndf($id_ndf){
             return DbNoteDeFrais::lister($id_ndf);
         }
-
-        include 'vue/vueSaisie/v_ndf.php';
+        if($_GET['valid_ndf'] == 0){
+            include 'vue/vueSaisie/v_ndf.php';
+        }
+        if($_GET['valid_ndf'] == 1){
+            include 'vue/vueSaisie/v_historique.php';
+        }
+        
     break;
 
     /** 

@@ -36,9 +36,9 @@ class DbNoteDeFrais{
 
     public static function lister($id_ndf)
     {
-        $sql = "SELECT * FROM note_de_frais WHERE Id_ndf = $id_ndf;";
-        $objResultat = connectPdo::getObjPdo()->query($sql);
-        $result = $objResultat->fetch();
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM note_de_frais WHERE Id_ndf = (?)");
+        $stmt->execute([$id_ndf]);
+        $result = $stmt->fetch();
         return $result;
     }
 
