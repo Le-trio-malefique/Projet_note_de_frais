@@ -114,4 +114,8 @@ switch($action){
     case 'saisie_fc':
         include 'vue/vueSaisie/v_ndf.php';
     break;
+
+    case 'saisie_fk':
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
 }
