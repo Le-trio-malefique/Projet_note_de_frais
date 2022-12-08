@@ -12,8 +12,14 @@ switch($action){
      * @return array Liste des notes de frais
     */
     case 'lister':
-        $result = DbNoteDeFrais::lister($_SESSION['id']);
-        include 'vue/vueSaisie/v_ndf.php';
+        $valid_ndf = DbNoteDeFrais::list_ndf();
+
+        // Function get_info_ndf
+        function get_info_ndf($id_ndf){
+            return DbNoteDeFrais::lister_historique($id_ndf);
+        }
+
+        include 'vue/vueSaisie/v_ListeNdf.php';
     break;
 
     /** 
@@ -25,8 +31,13 @@ switch($action){
     */
     case 'newNote':
         DbNoteDeFrais::newNote($_SESSION['id']);
-        $result = DbNoteDeFrais::lister($_SESSION['id']);
-        include 'vue/vueSaisie/v_ndf.php';
+        $valid_ndf = DbNoteDeFrais::list_ndf();
+
+        // Function get_info_ndf
+        function get_info_ndf($id_ndf){
+            return DbNoteDeFrais::lister_historique($id_ndf);
+        }
+        include 'vue/vueSaisie/v_ListeNdf.php';
     break;
 
     /** 
