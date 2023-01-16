@@ -10,7 +10,7 @@ switch ($action) {
 
     case 'formDeconnect':
         session_unset();
-        header("Location:index.php");
+        header("Location: index.php");
         break;
 
     case 'connect':
@@ -31,7 +31,7 @@ switch ($action) {
                     $_SESSION['vehicule'] = [$result_v[0]['Marque'], $result_v[0]['Modele'], $result_v[0]['Carburant'], $result_v[0]['Cylindre']];
                 }
                 if($_SESSION['Admin'] == 0){
-                    header("Location:index.php?ctl=notedefrais&action=lister");
+                    header("Location:index.php?ctl=notedefrais&action=lister&vue=saisie");
                 }
                 else{ 
                     header("Location:index.php?ctl=gestionnaire&action=profilAdmin");

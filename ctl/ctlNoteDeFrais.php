@@ -18,10 +18,11 @@ switch($action){
         function get_info_ndf($id_ndf){
             return DbNoteDeFrais::lister($id_ndf);
         }
-        if($_GET['valid_ndf'] == 0){
+
+        if($_GET['vue'] == "saisie"){
             include 'vue/vueSaisie/v_ndf.php';
         }
-        if($_GET['valid_ndf'] == 1){
+        if($_GET['vue'] == "historique"){
             include 'vue/vueSaisie/v_historique.php';
         }
         
@@ -74,9 +75,10 @@ switch($action){
     */
     case 'listeFrais':
         $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
-        if (isset($_GET['vue'])) {
-            include 'vue/vueProfil/v_Historique_liste_frais.php';
-        }else{
+        if (isset($_GET['vue']) && $_GET['vue'] == "historique") {
+            include 'vue/vueSaisie/v_Historique.php';
+        }
+        if (isset($_GET['vue']) && $_GET['vue'] == "saisie"){
             include 'vue/vueSaisie/v_ndf.php';
         }
     break;

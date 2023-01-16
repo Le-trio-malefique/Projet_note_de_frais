@@ -14,12 +14,12 @@
                     </a>
                 </li>
                 <li class="nav-item ml-auto">
-                    <a href="index.php?ctl=notedefrais&action=lister" class="nav-link p-3" style="color: #1A4087;">
+                    <a href="index.php?ctl=notedefrais&action=lister&vue=saisie" class="nav-link p-3" style="color: #1A4087;">
                         <h3>Saisie</h3>
                     </a>
                 </li>
                 <li class="nav-item ml-auto">
-                    <a href="index.php?ctl=notedefrais&action=lister" class="nav-link p-3" style="color: #1A4087;">
+                    <a href="index.php?ctl=notedefrais&action=lister&vue=historique" class="nav-link p-3" style="color: #1A4087;">
                         <h3>Historique</h3>
                     </a>
                 </li>

@@ -22,7 +22,7 @@
                                     ".$ndf['Date']."
                                 </td>
                                 <td class='p-3 d-flex-lg justify-content-center'>
-                                    <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?vue=1&ctl=notedefrais&action=listeFrais&Id_ndf=".$ndf['Id_ndf']."'>Consulter</a>
+                                    <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=listeFrais&Id_ndf=".$ndf['Id_ndf']."&vue=historique'>Consulter</a>
                                 </td>
                             </tr>";
                 }
