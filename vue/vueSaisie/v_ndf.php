@@ -110,7 +110,7 @@ if($_GET['action'] == 'listeFrais'){
             </div>
             <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
                 <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fc&Id_ndf="'.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais classique</button></a>
-                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fk&Id_ndf="'.$_GET["Id_ndf"].'évue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais kilométrique</button></a>
+                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fk&Id_ndf="'.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais kilométrique</button></a>
             </div>
         </div>
     </div>';
