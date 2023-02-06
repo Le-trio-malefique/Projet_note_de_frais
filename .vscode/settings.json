@@ -1,0 +1,17 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "notedefrais.store",
+      "port": 3306,
+      "driver": "MySQL",
+      "database": "u479250329_note_de_frais",
+      "username": "u479250329_user",
+      "password": "Rootroot10",
+      "name": "Projet_note_de_frais"
+    }
+  ]
+}

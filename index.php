@@ -23,6 +23,9 @@ if(isset($_GET['ctl']))
 		case 'notedefrais':
 			include 'ctl/ctlNoteDeFrais.php';
 			break;
+		case 'insertAllUsers':
+			include 'ctl/ctlInsertAllUsers.php';
+			break;
 	}
 }
 else{echo "<div class='h-100 w-100'><h1 class='text-center mt-5'>Bienvenue</h1></div>";}
