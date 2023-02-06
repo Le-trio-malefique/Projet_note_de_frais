@@ -15,12 +15,11 @@ switch ($action) {
 
     case 'formDeconnect':
         session_unset();
-        header("Location: index.php");
+        include 'vue/vueConnexion/v_Connexion.php';
         break;
 
     case 'connect':
         // function verify connection user and admin
         DbConnection::verifyUserConnection();
-        
         break;
 }
