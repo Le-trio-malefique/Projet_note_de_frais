@@ -1,3 +1,8 @@
+<!-- RETOUR -->
+<div class="pt-3 pl-5">
+    <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+</div>
+
 <!-- FORMULAIRE MODIFIER -->
 <?php if (isset($_SESSION['vehicule'])) {?>
 

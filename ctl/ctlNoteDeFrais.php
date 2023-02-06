@@ -12,9 +12,22 @@ switch($action){
      * @return array Liste des notes de frais
     */
     case 'lister':
-        $result = DbNoteDeFrais::lister($_SESSION['id']);
-        include 'vue/vueSaisie/v_ListeNdf.php';
-        break;
+        $valid_ndf = DbNoteDeFrais::list_ndf();
+
+        // Function get_info_ndf
+        function get_info_ndf($id_ndf){
+            return DbNoteDeFrais::lister($id_ndf);
+        }
+
+        if($_GET['vue'] == "saisie"){
+            include 'vue/vueSaisie/v_ndf.php';
+        }
+        if($_GET['vue'] == "historique"){
+            include 'vue/vueSaisie/v_historique.php';
+        }
+        
+    break;
+
     /** 
      * @param int id : Identifiant de l'utilisateur
      * 
@@ -24,9 +37,15 @@ switch($action){
     */
     case 'newNote':
         DbNoteDeFrais::newNote($_SESSION['id']);
-        $result = DbNoteDeFrais::lister($_SESSION['id']);
-        include 'vue/vueSaisie/v_ListeNdf.php';
-        break;
+        $valid_ndf = DbNoteDeFrais::list_ndf();
+
+        // Function get_info_ndf
+        function get_info_ndf($id_ndf){
+            return DbNoteDeFrais::lister($id_ndf);
+        }
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
+
     /** 
      * @param int id : Identifiant de l'utilisateur
      * @param int idNdf : Identifiant de la note de frais
@@ -37,9 +56,16 @@ switch($action){
     */
     case 'supprimer':
         DbNoteDeFrais::supprimer($_SESSION['id'], $_POST['idNdf']);
-        $result = DbNoteDeFrais::lister($_SESSION['id']);
-        include 'vue/vueSaisie/v_ListeNdf.php';
-        break;
+        
+        $valid_ndf = DbNoteDeFrais::list_ndf();
+
+        // Function get_info_ndf
+        function get_info_ndf($id_ndf){
+            return DbNoteDeFrais::lister($id_ndf);
+        }
+
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
 
     /**-----------------Frais---------------------*/
 
@@ -49,8 +75,14 @@ switch($action){
     */
     case 'listeFrais':
         $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
-        include 'vue/vueSaisie/v_liste_frais.php';
-        break;
+        if (isset($_GET['vue']) && $_GET['vue'] == "historique") {
+            include 'vue/vueSaisie/v_Historique.php';
+        }
+        if (isset($_GET['vue']) && $_GET['vue'] == "saisie"){
+            include 'vue/vueSaisie/v_ndf.php';
+        }
+    break;
+
     /**
      * @param int Montant : Valeur en euro
      * @param file Justificatif : Fichier
@@ -65,25 +97,32 @@ switch($action){
     case 'newFrais':
         DbNoteDeFrais::newFrais($_POST['Montant'],$_FILES['Justificatif'],$_GET['Id_ndf'],$_POST['Statut'], $_POST['Type'], $_POST['Detail'], $_POST['Date']);
         $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
-        include 'vue/vueSaisie/v_liste_frais.php';
-        break;
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
 
     case 'afficherModifierFrais':
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
-        include 'vue/vueSaisie/v_Saisie.php';
-        break;
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
     
     case 'modifierFrais':
-        include 'vue/vueSaisie/v_liste_frais.php';
-        break;
+        //ajout action de modification
+
+        $result = DbNoteDeFrais::lister($_SESSION['id']);
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
 
     case 'supprimerFrais':
         DbNoteDeFrais::supprimerFrais($_POST['Id']);
         $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
-        include 'vue/vueSaisie/v_liste_frais.php';
-        break;
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
     
     case 'saisie_fc':
-        include 'vue/vueSaisie/v_Saisie.php';
-        break;
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
+
+    case 'saisie_fk':
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
 }
