@@ -2,7 +2,10 @@
 session_start();
 
 include 'vue/enTete.php';
-include 'vue/menu.php';	
+
+include 'vue/menu.php';
+echo "";
+
 
 if(isset($_GET['ctl']))
 {
