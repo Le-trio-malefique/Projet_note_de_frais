@@ -10,9 +10,44 @@
             if(isset($_SESSION['login'])){
         ?>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item ml-auto active">
-                <a href="index.php?ctl=utilisateur&action=profil" class="nav-link p-3" style="color: #1A4087;">
-                    <h3>Profil</h3><span class="sr-only">(current)</span>
+            <?php
+            if (isset($_SESSION['login']) && $_SESSION['Admin'] == 0) {
+            ?>
+                <li class="nav-item ml-auto active">
+                    <a href="index.php?ctl=utilisateur&action=profil" class="nav-link p-3" style="color: #1A4087;">
+                        <h3>Profil</h3><span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item ml-auto">
+                    <a href="index.php?ctl=notedefrais&action=lister&vue=saisie" class="nav-link p-3" style="color: #1A4087;">
+                        <h3>Saisie</h3>
+                    </a>
+                </li>
+                <li class="nav-item ml-auto">
+                    <a href="index.php?ctl=notedefrais&action=lister&vue=historique" class="nav-link p-3" style="color: #1A4087;">
+                        <h3>Historique</h3>
+                    </a>
+                </li>
+            <?php
+            } elseif(isset($_SESSION['login']) && $_SESSION['Admin'] == 1) { ?>
+                <!-- <li class="nav-item ml-auto">
+                    <a href="index.php?ctl=notedefrais&action=lister" class="nav-link p-3" style="color: #1A4087;">
+                        <h3>Historique</h3>
+                    </a>
+                </li> -->
+            <?php
+            }
+            ?>
+        </ul>
+    </div>
+
+    <div class="row ml-auto mr-3">
+
+
+        <div class="mr-0">
+            <div class="dropdown">
+                <a class="col d-flex justify-content-end" style="margin-right: 0px;" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i style="font-size : 3em; color: #1A4087;" class="bi bi-person-circle"></i>
                 </a>
             </li>
             <li class="nav-item ml-auto">
