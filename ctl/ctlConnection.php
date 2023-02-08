@@ -15,7 +15,7 @@ switch ($action) {
 
     case 'formDeconnect':
         session_unset();
-        include 'vue/vueConnexion/v_Connexion.php';
+        header('Location: index.php');
         break;
 
     case 'connect':
