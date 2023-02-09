@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <?php
-            if(isset($_SESSION['login'])){
+            if(isset($_SESSION['login']) && $_SESSION['Admin'] == 0){
         echo'
         <ul class="navbar-nav ml-auto">
             <li class="nav-item ml-auto active">
@@ -26,6 +26,12 @@
                 </a>
             </li>
         </ul>';
+            }
+        ?>
+
+        <?php
+            if(isset($_SESSION['login']) && $_SESSION['Admin'] == 1){
+                echo'';
             }
         ?>
 

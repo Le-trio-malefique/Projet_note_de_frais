@@ -41,7 +41,7 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
                                     <td class='p-3 d-flex-lg justify-content-center'>
                                         <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=listeFrais&Id_ndf=".$ndf['Id_ndf']."&vue=saisie'>Saisir des frais</a>
                                         <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimer' method='post'>
-                                            <input type='hidden' name='idNdf' value='".$ndf['Id_ndf']."'>
+                                            <input type='hidden' name='Id_ndf' value='".$ndf['Id_ndf']."'>
                                             <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
                                         </form>
                                     </td>
