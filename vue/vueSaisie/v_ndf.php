@@ -225,7 +225,7 @@ if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFrais')
             
         </div>
         <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-            <button type="submit" class="btn btn-primary my-auto w-50" onclick="loader()">'; if(isset($result)){ echo "Modifié";} else { echo"Envoyé";} echo'</button>
+            <button type="submit" class="btn btn-primary my-auto w-50" onclick="loader()">'; if(isset($result)){ echo "Modifier";} else { echo"Envoyer";} echo'</button>
             </form>
         </div>
     </div>

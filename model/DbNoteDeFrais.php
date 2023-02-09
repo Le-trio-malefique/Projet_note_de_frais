@@ -67,51 +67,35 @@ class DbNoteDeFrais{
 
     public static function newFrais($Montant, $justificatif, $id_ndf, $Statut, $Type, $Detail, $Date)
     {
-        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`) VALUES (NULL,'$Montant', '".$id_ndf."_".$Detail."_".$_FILES['Justificatif']['name']."', $id_ndf, '$Statut', '$Type', '$Detail', '$Date')";
+        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`) VALUES (NULL,'$Montant', '".$id_ndf."_".$Detail.".".(pathinfo($_FILES['Justificatif']['name']))['extension']."', $id_ndf, '$Statut', '$Type', '$Detail', '$Date')";
 		connectPdo::getObjPdo()->exec($sql);
         
         // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
         if (isset($_FILES['Justificatif']) && $_FILES['Justificatif']['error'] == 0)
         {
-                // Testons si le fichier n'est pas trop gros
-                if ($_FILES['Justificatif']['size'] <= 1000000000000)
-                {
-                        // Testons si l'extension est autorisée
-                        $fileInfo = pathinfo($_FILES['Justificatif']['name']);
-                        $extension = $fileInfo['extension'];
-                        $allowedExtensions = ['jpg', 'jpeg', 'pdf', 'png', 'PDF'];
-                        if (in_array($extension, $allowedExtensions)){
-                            
-                            /*echo "<div class='justify-content-center d-flex pt-5'>
-                                    <div class='card bg-success' style='min-width : 50vw;'>
-                                        <h3 class='text-center text-white'>Envoyé avec succès</h3>
-                                    </div>
-                                </div>";*/
-
-                            // On peut valider le fichier et le stocker définitivement
-                            move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/'.basename($id_ndf."_".$Detail."_".$_FILES['Justificatif']['name']));
-                            sleep(3);
-                            echo "<script>
-
-                                        document.getElementById('1').className = 'loader fadeOut';
-                                        document.getElementById('2').className = '';
-                                        document.getElementById('3').textContent = 'Envoyé avec succès';
-                            
-                                    </script>";
-                        }
+            // Testons si le fichier n'est pas trop gros
+            if ($_FILES['Justificatif']['size'] <= 1000000000000)
+            {
+                // Testons si l'extension est autorisée
+                $fileInfo = pathinfo($_FILES['Justificatif']['name']);
+                $extension = $fileInfo['extension'];
+                $allowedExtensions = ['jpg', 'jpeg', 'pdf', 'png', 'PDF'];
+                if (in_array($extension, $allowedExtensions)){
+                    
+                    // On peut valider le fichier et le stocker définitivement
+                    move_uploaded_file($_FILES['Justificatif']['tmp_name'], 'uploads/'.basename($id_ndf."_".$Detail.".".$extension));
+                    sleep(3);
+                    echo "<script>
+                            document.getElementById('1').className = 'loader fadeOut';
+                            document.getElementById('2').className = '';
+                            document.getElementById('3').textContent = 'Envoyé avec succès';
+                        </script>";
                 }
+            }
+            
         }
         
     }
-
-    /*
-    public static function lister($idUser)
-	{
-        $sql = "SELECT * FROM `note_de_frais` WHERE Id_utilisateur=".$idUser;
-		$objResultat = connectPdo::getObjPdo()->query($sql);
-		$result = $objResultat->fetchAll();
-		return $result;
-    }*/
 
     public static function listeFrais($id_ndf)
 	{
@@ -129,6 +113,11 @@ class DbNoteDeFrais{
 
     public static function supprimerFrais($id_ligne)
 	{
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT Justificatif FROM `ligne` WHERE Id =(?)");
+        $stmt->execute([$id_ligne]);
+        $result = $stmt->fetch();
+        unlink("uploads/".$result['Justificatif']);
+
         $sql_Delete = "DELETE FROM `ligne` WHERE Id =".$id_ligne;
         connectPdo::getObjPdo()->exec($sql_Delete);
     }
