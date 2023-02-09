@@ -1,5 +1,5 @@
 <?php
-    if($_GET['action'] == 'listeFrais' || $_GET['action'] == 'saisie_fc'|| $_GET['action'] == 'saisie_fk' || $_GET['action'] == 'afficherModifierFrais'){
+    if($_GET['action'] == 'listeFrais' || $_GET['action'] == 'saisie_fc'|| $_GET['action'] == 'saisie_fk' || $_GET['action'] == 'afficherModifierFrais' || $_GET['action'] == 'newFrais'){
         echo'
         <!-- RETOUR -->
         <div class="row pt-4 m-0">
@@ -17,6 +17,7 @@
         <div class="row border" style="min-height : 11vh!important;">
             <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';}?></h4>
         </div>
+        hello
 
         
 <?php
