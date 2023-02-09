@@ -12,10 +12,10 @@
 <!-- CARD NEW NOTE DE FRAIS -->
 <div class="row w-100 mx-auto d-flex justify-content-center mt-3">
     <!-- CARD BOX -->
-    <div class="col-md-7 border rounded shadow my-md-2">
+    <div class="col-md-10 border rounded shadow my-md-2">
         <!-- TITRE -->
         <div class="row border" style="min-height : 11vh!important;">
-            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';}?></h4>
+            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';} if($_GET['action'] == 'saisie_fk'){ echo'Frais Kilometriques';}?></h4>
         </div>
 
         
@@ -237,46 +237,76 @@ if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFrais')
 if($_GET['action'] == 'saisie_fk'){
 
 ?>
-    <div class="container-fluid text-center mt-5" style="min-height : 70vh!important;">';
+    <div class="row text-center" style="min-height : 70vh!important;">
 
         <?php
             if (isset($result))
             {
-                echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."&vue=saisie' method='post' enctype='multipart/form-data'>";
+                echo "<form action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."&vue=saisie' method='post' enctype='multipart/form-data'>";
             }
             else {
-                echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie' method='post' enctype='multipart/form-data'>";
-            }
+                echo "<form action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie' method='post' enctype='multipart/form-data'>";
+            }     
+        ?>
+        <!-- INFOS -->
+            <input type="hidden" name="Statut" value="En attente">
+            <input type="hidden" name="Type" value="FK">
+        </form>
 
+        <?php
             if($_GET["action"] == "saisie_fk" || $_GET["action"] == "afficherModifierFrais")
             { 
         ?>
-                    
-                <div class="col-lg">
-                    <div class="row-md d-flex form-control mx-auto">
+                <div class="col-md-6 text-center">
+                    <div class="col-12 d-flex form-control mt-2">
                         <label class="text-left col-lg p-0" for="depart">Départ</label>
-                        <input type="hidden" name="Statut" value="En attente">
-                        <input type="hidden" name="Type" value="FK">
-                        <input name="depart" type="text">
+                        <input type="text" id="origin" placeholder="Départ">
                     </div>
-                    <div class="row-md d-flex form-control mt-5 mx-auto">
+                    <div class="col-md-12 d-flex form-control mt-2">
                         <label class="text-left col-lg p-0" for="arriver">Arriver</label>
-                        <input name="arriver" type="text">
+                        <input type="text" id="dest" placeholder="Arrivé">
                     </div>
-                    <div class="row d-flex form-control mt-5 mx-auto mb-5">
                     
+                    <div class="col-md-12 mt-3">
+                        <button id="button">Calculer</button>
+                        <button onclick="location.reload();">Reset</button>
                     </div>
+                    
+                    <p class="col-12 mt-3" id="result" onchange="function()">
+                        Aucun résultat
+                    </p>
                 </div>
 
-                <div class="col-lg border" style="min-height : 11vh!important;" >
+                <div class="col-md-6" style="min-height : 11vh!important;" >
                     <div class="row justify-content-center">
                         <div class="col-lg-4"><label for="files" class="btn btn-primary mt-3">Select Files</label></div>
-                        <div class="col-lg-4 my-auto"><p class="m-0" id="nomFichier">'; if (isset($result)){ echo $result[0]["Justificatif"]; } echo'</p></div>
+                        <div class="col-lg-4 my-auto"><p class="m-0" id="nomFichier"><?php if (isset($result)){ echo $result[0]["Justificatif"]; } ?></p></div>
                     </div>
                     <input id="files" class="text-left d-none" type="file" name="Justificatif" onchange="previewPicture(this)" value=" <?php if(isset($result)){ echo "uploads/".$result[0]["Justificatif"];} ?>" accept=".jpg, .png, .pdf , .PDF">
                 <div id="fichier">
+            </div></div></div></div></div>
                     
 <?php 
-            }                
-}
-?>
+            }
+}?>
+
+
+<script>
+    document.getElementById("button").addEventListener("click", function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "vue/vueSaisie/calcul_distance.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById("result").innerHTML = xhr.responseText;
+            }
+        };
+        var origin = document.getElementById("origin").value;
+        var dest = document.getElementById("dest").value;
+        xhr.send("origin=" + origin + "&dest=" + dest);
+    });
+
+    document.getElementById("result").addEventListener("change", function() {
+        console.log("DATAAAA");
+    });
+</script>

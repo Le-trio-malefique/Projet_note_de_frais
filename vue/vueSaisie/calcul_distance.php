@@ -21,9 +21,7 @@ function api($orig, $dest){
 
     // Trajet possible
     if ($json_status == 0) {
-        echo "Trajet de " . $orig . " à " . $dest . "<br>";
-        echo "Durée du trajet :  " . $json_data["route"]["formattedTime"] . "<br>";
-        echo "Kilometers:        " . number_format(($json_data["route"]["distance"]) * 1.61, 2) . "<br>";
+        echo "<input type='hidden' name='distance' value='".$json_data["route"]["distance"]."' >";
     }else {
         echo "Données invalides";
     } 
@@ -32,5 +30,7 @@ function api($orig, $dest){
 
 
 ?>
+
+
 
 
