@@ -41,7 +41,7 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
                                     <td class='p-3 d-flex-lg justify-content-center'>
                                         <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=listeFrais&Id_ndf=".$ndf['Id_ndf']."&vue=saisie'>Saisir des frais</a>
                                         <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimer' method='post'>
-                                            <input type='hidden' name='Id_ndf' value='".$ndf['Id_ndf']."'>
+                                            <input type='hidden' name='idNdf' value='".$ndf['Id_ndf']."'>
                                             <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
                                         </form>
                                     </td>
@@ -66,13 +66,14 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
 
 //Liste frais
 
-if($_GET['action'] == 'listeFrais'){
+if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["action"] == "supprimerFrais"){
+
     echo'
     
     <div class="row text-center" style="min-height : 70vh!important;">
         <div class="mt-5 mx-5 w-100">';
 
-            if(isset($result)){
+            if(isset($result) && count($result) > 0){
                 echo "<table class='table-striped w-100'>";
                 foreach ($result as $row){
                     echo "<tr>
@@ -102,15 +103,15 @@ if($_GET['action'] == 'listeFrais'){
             }
             else{
                 echo '<h1>
-                        Aucune note de frais enregistré
+                        Aucun frais enregistré
                     </h1>';
             } 
             echo'
                 </div>
             </div>
             <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fc&Id_ndf="'.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais classique</button></a>
-                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fk&Id_ndf="'.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais kilométrique</button></a>
+                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fc&Id_ndf='.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais classique</button></a>
+                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fk&Id_ndf='.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais kilométrique</button></a>
             </div>
         </div>
     </div>';
