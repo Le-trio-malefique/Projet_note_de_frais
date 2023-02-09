@@ -81,14 +81,23 @@ if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["ac
                                     <p>".$row['Statut']."</p>
                                 </td>
                                 <td class='p-3 d-flex-lg justify-content-center'>";
-                    if($row['Statut'] == 'En attente'){
-                            echo "<a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=afficherModifierFrais&id=".$row['Id']."&vue=saisie'>Modifier</a>
+                    if($row['Statut'] == 'En attente' && $row['Type'] == 'FC'){
+                            echo "<a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=afficherModifierFraisClassique&id=".$row['Id']."&vue=saisie'>Modifier</a>
                                     <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimerFrais&Id_ndf=".$_GET['Id_ndf']."' method='post'>
                                         <input type='hidden' name='Id' value='".$row['Id']."'>
                                         <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
                                     </form>
                                 </td>
                             </tr>";
+                    }
+                    if($row['Statut'] == 'En attente' && $row['Type'] == 'FC'){
+                            echo "<a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=afficherModifierFraisKilo&id=".$row['Id']."&vue=saisie'>Modifier</a>
+                                        <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimerFrais&Id_ndf=".$_GET['Id_ndf']."' method='post'>
+                                            <input type='hidden' name='Id' value='".$row['Id']."'>
+                                            <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
+                                        </form>
+                                    </td>
+                                </tr>";
                     }
                     else{
                         echo"<form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=afficherConsulterFrais&id=".$row['Id']."&vue=saisie' method='post'>
@@ -118,7 +127,7 @@ if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["ac
 
 //Saisie et Modification frais classique
 
-if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFrais'){
+if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFraisClassique'){
     echo'
     <div class="container-fluid text-center mt-5" style="min-height : 70vh!important;">';
 
@@ -234,7 +243,7 @@ if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFrais')
 
 //Saisie frais kilométrique
 
-if($_GET['action'] == 'saisie_fk'){
+if($_GET['action'] == 'saisie_fk' || $_GET['action'] == 'afficherModifierFraisKilo'){
 
 ?>
     <div class="row text-center" style="min-height : 70vh!important;">
@@ -251,7 +260,6 @@ if($_GET['action'] == 'saisie_fk'){
         <!-- INFOS -->
             <input type="hidden" name="Statut" value="En attente">
             <input type="hidden" name="Type" value="FK">
-        </form>
 
         <?php
             if($_GET["action"] == "saisie_fk" || $_GET["action"] == "afficherModifierFrais")
@@ -268,13 +276,15 @@ if($_GET['action'] == 'saisie_fk'){
                     </div>
                     
                     <div class="col-md-12 mt-3">
-                        <button id="button">Calculer</button>
-                        <button onclick="location.reload();">Reset</button>
+                        <button class="btn btn-primary" id="button">Calculer</button>
+                        <button class="btn btn-secondary"  onclick="location.reload();">Reset</button>
                     </div>
                     
-                    <p class="col-12 mt-3" id="result" onchange="function()">
+                    <p class="col-12 mt-3" id="result">
                         Aucun résultat
                     </p>
+                    <input class="ml-auto col-lg" type="date" name="Date" value="<?php if(isset($result)){ echo $result[0]["Date"];} ?>" required>
+                    <textarea class="ml-auto col-lg mt-3" type="text-area" name="Detail" value=" "></textarea>
                 </div>
 
                 <div class="col-md-6" style="min-height : 11vh!important;" >
@@ -284,9 +294,70 @@ if($_GET['action'] == 'saisie_fk'){
                     </div>
                     <input id="files" class="text-left d-none" type="file" name="Justificatif" onchange="previewPicture(this)" value=" <?php if(isset($result)){ echo "uploads/".$result[0]["Justificatif"];} ?>" accept=".jpg, .png, .pdf , .PDF">
                 <div id="fichier">
-            </div></div></div></div></div>
+            
                     
 <?php 
+
+if(isset($result)){
+    $res = substr($result[0]['Justificatif'], -3);
+    if($res == "pdf" || $res == "PDF"){
+        echo "<iframe src='uploads/".$result[0]['Justificatif']."' style='min-height: 400px;'></iframe>";
+    }
+    else{
+        echo "<img src='uploads/".$result[0]['Justificatif']."' class='img-fluid py-3'></img>";
+    }
+}
+echo'</div>
+
+<script type="text/javascript" >
+
+    let previewPicture  = function (e) {
+
+        // e.files contient un objet FileList
+        const [file] = e.files
+
+        let extension = file.name.split(".").pop()
+        document.getElementById("nomFichier").innerHTML = file.name
+
+        if(extension != "pdf"){
+            let doc = document.createElement("img")
+            doc.classList.add("img-fluid")
+            doc.classList.add("my-3")
+            // "file" est un objet File
+            if (file) {
+
+                // On change l\'URL du fichier
+                doc.src = URL.createObjectURL(file)
+                let madiv = document.getElementById("fichier")
+                madiv.innerHTML=""
+                madiv.appendChild(doc)
+            }
+        }
+        else{
+            let doc = document.createElement("iframe")
+            // "file" est un objet File
+            if (file) {
+                doc.style.cssText += "min-height: 400px;"
+                // On change l\'URL du fichier
+                doc.src = URL.createObjectURL(file) + "#toolbar=0"
+                let madiv = document.getElementById("fichier")
+                madiv.innerHTML=""
+                madiv.appendChild(doc)
+            }
+        }
+        
+    } 
+</script>
+
+</div>
+
+</div>
+<div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
+<button type="submit" class="btn btn-primary my-auto w-50" onclick="loader()">'; if(isset($result)){ echo "Modifier";} else { echo"Envoyer";} echo'</button>
+</form>
+</div>
+</div>
+</div>';
             }
 }?>
 
