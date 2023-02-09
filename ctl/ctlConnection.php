@@ -7,7 +7,6 @@ $action = $_GET['action'];
 
 switch ($action) {
     case 'formConnect':
-
         // function verify connection user and admin
         DbConnection::verifyUserConnection();
         include 'vue/vueConnexion/v_Connexion.php';
