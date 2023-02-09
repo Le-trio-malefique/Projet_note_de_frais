@@ -2,7 +2,7 @@
 <br>
 <?php 
 
-var_dump(DbNoteDeFrais::list_ndf(0));
+
 
  ?>
 <div class="container-fluid"  style="min-height : 71vh!important;">
