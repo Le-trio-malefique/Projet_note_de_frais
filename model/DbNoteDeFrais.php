@@ -5,19 +5,31 @@ class DbNoteDeFrais{
     /**
      * HISTORIQUE
      */
-    public static function list_ndf(){ // rentrer en paramètre le 0 ou 1
+    public static function list_ndf($type_ndf){ // rentrer en paramètre le 0 ou 1
         // Function all_ndf
-        $all_ndf = DbNoteDeFrais::all_ndf($_SESSION['id']);
+        if(isset($_SESSION['Admin'])!=1){
+            $all_ndf = DbNoteDeFrais::all_ndf($_SESSION['id']);
+        }else{
+            $all_ndf = DbNoteDeFrais::all_ndf_gestionnaire();
+        }
         // Function is_ndf_valid
         $valid_ndf = array();
         foreach ($all_ndf as $id_ndf) {
-            if(DbNoteDeFrais::is_ndf_valid($id_ndf[0])[0] == 0){ // <----passer en param d'entrée 
+            if(DbNoteDeFrais::is_ndf_valid($id_ndf[0])[0] == $type_ndf){ // <----passer en param d'entrée 
                 $valid_ndf[] += $id_ndf[0];
             }
         }
         return $valid_ndf;
     }
     
+    public static function all_ndf_gestionnaire()
+    {
+        $sql = "SELECT Id_ndf FROM note_de_frais";
+        $objResultat = connectPdo::getObjPdo()->query($sql);
+        $result = $objResultat->fetchAll();
+        return $result;
+    }
+
     public static function all_ndf($id_utilisateur)
     {
         $sql = "SELECT Id_ndf FROM note_de_frais WHERE Id_Utilisateur = $id_utilisateur;";

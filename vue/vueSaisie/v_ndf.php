@@ -1,5 +1,5 @@
 <?php
-    if($_GET['action'] != 'lister'){
+    if($_GET['action'] == 'listeFrais' || $_GET['action'] == 'saisie_fc'|| $_GET['action'] == 'saisie_fk' || $_GET['action'] == 'afficherModifierFrais'){
         echo'
         <!-- RETOUR -->
         <div class="row pt-4 m-0">
@@ -91,8 +91,7 @@ if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["ac
                             </tr>";
                     }
                     else{
-                        echo"<form class='mt-2 p-0' action='#' method='post'>
-                                    <input type='hidden' name='Id' value='".$row['Id']."'>
+                        echo"<form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=afficherConsulterFrais&id=".$row['Id']."&vue=saisie' method='post'>
                                     <input type='submit' class='btn btn-primary mx-auto w-100' value='Consulter' style='max-width : 200px!important;'>
                                 </form>
                             </td>
@@ -117,7 +116,7 @@ if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["ac
     </div>';
 }
 
-//Saisie frais classique
+//Saisie et Modification frais classique
 
 if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFrais'){
     echo'
