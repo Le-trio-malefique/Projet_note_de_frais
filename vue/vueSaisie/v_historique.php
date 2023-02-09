@@ -1,4 +1,16 @@
 <?php
+    if($_GET['action'] == 'listeFrais' || $_GET['action'] == 'afficherConsulterFrais'){
+        echo'
+        <!-- RETOUR -->
+        <div class="row pt-4 m-0">
+            <div class="col-md-6 text-center">
+                <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+            </div>
+        </div>';
+    } 
+?>
+
+<?php
 if($_GET['action'] == 'lister'){
 
     echo '
@@ -47,12 +59,6 @@ if($_GET['action'] == 'lister'){
 if($_GET['action'] == 'listeFrais'){
     echo '
     
-    <!-- RETOUR -->
-<div class="row pt-4">
-    <div class="col-md-6 text-center">
-        <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
-    </div>
-</div>
 
 <!-- CARD NEW NOTE DE FRAIS -->
 <div class="row w-100 mx-auto d-flex justify-content-center mt-3" style="min-height : 100vh!important;">
