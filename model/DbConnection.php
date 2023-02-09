@@ -62,7 +62,7 @@ class DbConnection
 						}
 						// Verify if user is admin and redirect to admin page
 						if ($_SESSION['Admin'] == 0) {
-							header('Location:index.php?ctl=notedefrais&action=lister&vue=saisie');
+							header('Location:index.php?ctl=notedefrais&action=lister&vue=saisie&TypeNdf=0');
 						} else {
 							header('Location:index.php?ctl=gestionnaire&action=profilAdmin');
 						}

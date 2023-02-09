@@ -5,13 +5,13 @@ class DbNoteDeFrais{
     /**
      * HISTORIQUE
      */
-    public static function list_ndf(){ // rentrer en paramètre le 0 ou 1
+    public static function list_ndf($type_ndf){ // rentrer en paramètre le 0 ou 1
         // Function all_ndf
         $all_ndf = DbNoteDeFrais::all_ndf($_SESSION['id']);
         // Function is_ndf_valid
         $valid_ndf = array();
         foreach ($all_ndf as $id_ndf) {
-            if(DbNoteDeFrais::is_ndf_valid($id_ndf[0])[0] == 0){ // <----passer en param d'entrée 
+            if(DbNoteDeFrais::is_ndf_valid($id_ndf[0])[0] == $type_ndf){ // <----passer en param d'entrée 
                 $valid_ndf[] += $id_ndf[0];
             }
         }
