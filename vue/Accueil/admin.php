@@ -1,10 +1,5 @@
 <br>
 <br>
-<?php 
-
-
-
- ?>
 <div class="container-fluid"  style="min-height : 71vh!important;">
     <div class="row ">
         <table class="table table-striped table-responsive-sm my-5 mx-5">
