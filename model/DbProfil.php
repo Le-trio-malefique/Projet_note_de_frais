@@ -20,6 +20,8 @@ class DbProfil{
 		$sql = "UPDATE `vehicule` SET `Marque` = '$marque', `Modele` = '$modele', `Carburant` = '$carburant', `Cylindre` = '$cylindre' WHERE Id_utilisateur = $id";
 		connectPdo::getObjPdo()->exec($sql);
 	}
+
+	// fonction 
 }
 
 ?>
