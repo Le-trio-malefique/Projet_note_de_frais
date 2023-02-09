@@ -21,7 +21,7 @@ class DbProfil{
 		connectPdo::getObjPdo()->exec($sql);
 	}
 
-	// fonction 
+	// fonction
 }
 
 ?>
