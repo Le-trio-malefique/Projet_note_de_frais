@@ -12,7 +12,9 @@ switch($action){
      * @return array Liste des notes de frais
     */
     case 'lister':
-        $valid_ndf = DbNoteDeFrais::list_ndf();
+        $type_ndf = $_GET['TypeNdf'];
+
+        $valid_ndf = DbNoteDeFrais::list_ndf($type_ndf);
 
         // Function get_info_ndf
         function get_info_ndf($id_ndf){
@@ -37,7 +39,7 @@ switch($action){
     */
     case 'newNote':
         DbNoteDeFrais::newNote($_SESSION['id']);
-        $valid_ndf = DbNoteDeFrais::list_ndf();
+        $valid_ndf = DbNoteDeFrais::list_ndf(0);
 
         // Function get_info_ndf
         function get_info_ndf($id_ndf){
@@ -57,7 +59,7 @@ switch($action){
     case 'supprimer':
         DbNoteDeFrais::supprimer($_SESSION['id'], $_POST['idNdf']);
         
-        $valid_ndf = DbNoteDeFrais::list_ndf();
+        $valid_ndf = DbNoteDeFrais::list_ndf(0);
 
         // Function get_info_ndf
         function get_info_ndf($id_ndf){
@@ -103,6 +105,11 @@ switch($action){
     case 'afficherModifierFrais':
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
         include 'vue/vueSaisie/v_ndf.php';
+    break;
+
+    case 'afficherConsulterFrais':
+        $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
+        include 'vue/vueSaisie/v_historique.php';
     break;
     
     case 'modifierFrais':
