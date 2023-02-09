@@ -17,7 +17,6 @@
         <div class="row border" style="min-height : 11vh!important;">
             <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';}?></h4>
         </div>
-        hello
 
         
 <?php
@@ -236,43 +235,48 @@ if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFrais')
 //Saisie frais kilométrique
 
 if($_GET['action'] == 'saisie_fk'){
-    echo'
+
+?>
     <div class="container-fluid text-center mt-5" style="min-height : 70vh!important;">';
 
-                if (isset($result))
-                {
-                    echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."&vue=saisie' method='post' enctype='multipart/form-data'>";
-                }
-                else {
-                    echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie' method='post' enctype='multipart/form-data'>";
-                }
+        <?php
+            if (isset($result))
+            {
+                echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."&vue=saisie' method='post' enctype='multipart/form-data'>";
+            }
+            else {
+                echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie' method='post' enctype='multipart/form-data'>";
+            }
 
-                if($_GET["action"] == "saisie_fk" || $_GET["action"] == "afficherModifierFrais"){
-                    echo '
+            if($_GET["action"] == "saisie_fk" || $_GET["action"] == "afficherModifierFrais")
+            { 
+        ?>
                     
-            <div class="col-lg">
-                <div class="row-md d-flex form-control mx-auto">
-                    <label class="text-left col-lg p-0" for="depart">Départ</label>
-                    <input type="hidden" name="Statut" value="En attente">
-                    <input type="hidden" name="Type" value="FK">
-                    <input name="depart" type="text">
+                <div class="col-lg">
+                    <div class="row-md d-flex form-control mx-auto">
+                        <label class="text-left col-lg p-0" for="depart">Départ</label>
+                        <input type="hidden" name="Statut" value="En attente">
+                        <input type="hidden" name="Type" value="FK">
+                        <input name="depart" type="text">
+                    </div>
+                    <div class="row-md d-flex form-control mt-5 mx-auto">
+                        <label class="text-left col-lg p-0" for="arriver">Arriver</label>
+                        <input name="arriver" type="text">
+                    </div>
+                    <div class="row d-flex form-control mt-5 mx-auto mb-5">
+                    
+                    </div>
                 </div>
-                <div class="row-md d-flex form-control mt-5 mx-auto">
-                    <label class="text-left col-lg p-0" for="arriver">Arriver</label>
-                    <input name="arriver" type="text">
-                </div>
-                <div class="row d-flex form-control mt-5 mx-auto mb-5">
-                
-                </div>
-            </div>
 
-            <div class="col-lg border" style="min-height : 11vh!important;" >
-                <div class="row justify-content-center">
-                    <div class="col-lg-4"><label for="files" class="btn btn-primary mt-3">Select Files</label></div>
-                    <div class="col-lg-4 my-auto"><p class="m-0" id="nomFichier">'; if (isset($result)){ echo $result[0]["Justificatif"]; } echo'</p></div>
-                </div>
-                <input id="files" class="text-left d-none" type="file" name="Justificatif" onchange="previewPicture(this)" value="'; if(isset($result)){ echo "uploads/".$result[0]["Justificatif"];} echo'" accept=".jpg, .png, .pdf , .PDF">
+                <div class="col-lg border" style="min-height : 11vh!important;" >
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4"><label for="files" class="btn btn-primary mt-3">Select Files</label></div>
+                        <div class="col-lg-4 my-auto"><p class="m-0" id="nomFichier">'; if (isset($result)){ echo $result[0]["Justificatif"]; } echo'</p></div>
+                    </div>
+                    <input id="files" class="text-left d-none" type="file" name="Justificatif" onchange="previewPicture(this)" value=" <?php if(isset($result)){ echo "uploads/".$result[0]["Justificatif"];} ?>" accept=".jpg, .png, .pdf , .PDF">
                 <div id="fichier">
                     
-                    ';}
+<?php 
+            }                
 }
+?>
