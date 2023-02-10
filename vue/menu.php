@@ -31,7 +31,13 @@
 
         <?php
             if(isset($_SESSION['login']) && $_SESSION['Admin'] == 1){
-                echo'';
+                echo'<ul class="navbar-nav ml-auto">
+                <li class="nav-item ml-auto">
+                    <a href="#" class="nav-link p-3" style="color: #1A4087;">
+                        <h3>Historique</h3>
+                    </a>
+                </li>
+            </ul>';
             }
         ?>
 

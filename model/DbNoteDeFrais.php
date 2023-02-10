@@ -96,6 +96,42 @@ class DbNoteDeFrais{
         }
         
     }
+    // fonction qui appelle tous les utilisateurs
+    public static function CallAllUsers()
+    {
+        $sql = "SELECT * FROM `utilisateur`";
+        $objResultat = connectPdo::getObjPdo()->query($sql);
+        $result = $objResultat->fetchAll();
+        return $result;
+    }
+
+    // fonction qui récupère en fonction de l'utilisateur toutes ses données
+    public static function listeNoteDeFraisUsers()
+    {
+        $sql = "SELECT * FROM `note_de_frais`";
+        $objResultat = connectPdo::getObjPdo()->query($sql);
+        $result = $objResultat->fetchAll();
+        return $result;
+    }
+
+    // Fonction qui appelle la liste des notes de frais de l'utilisateur
+    public static function ligneNoteDeFraisUsers()
+    {
+        $sql = "SELECT * FROM `ligne`";
+        $objResultat = connectPdo::getObjPdo()->query($sql);
+        $result = $objResultat->fetchAll();
+        return $result;
+    }
+
+    // Fonction qui prend en parameter un nombre, stock dans un tableau et retourn un somme
+    public static function somme($nb)
+    {
+        $Add = [];
+        $Add += $nb;
+        $somme = array_sum($Add);
+        return $somme;
+
+    }
 
     public static function listeFrais($id_ndf)
 	{
@@ -139,5 +175,3 @@ class DbNoteDeFrais{
     }
 	
 }
-
-?>
