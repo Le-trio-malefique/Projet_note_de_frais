@@ -107,6 +107,11 @@ switch($action){
         include 'vue/vueSaisie/v_ndf.php';
     break;
 
+    case 'afficherModifierFraisKilo':
+        $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
+        include 'vue/vueSaisie/v_ndf.php';
+    break;
+
     case 'afficherConsulterFraisKilo':
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
         include 'vue/vueSaisie/v_historique.php';

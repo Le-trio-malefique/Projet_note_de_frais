@@ -21,8 +21,11 @@ function api($orig, $dest){
 
     // Trajet possible
     if ($json_status == 0) {
-        echo "Montant : ".number_format($json_data["route"]["distance"] * 0.603, 2)." €";
-        echo "<input type='hidden' name='Montant' value='".$json_data["route"]["distance"]."' >";
+        echo '<div class="d-flex row justify-content-center">';
+        echo '<h6>Montant:&nbsp</h6>';
+        echo "<p id='montant' >".number_format($json_data["route"]["distance"] * 0.603, 2)."</p>";
+        echo "</div>";
+        //echo "<input type='hidden' name='Montant' value='".$json_data["route"]["distance"]."' >";
     }else {
         echo "Données invalides";
     } 

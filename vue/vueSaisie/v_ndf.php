@@ -81,7 +81,8 @@ if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["ac
                                     <p>".$row['Statut']."</p>
                                 </td>
                                 <td class='p-3 d-flex-lg justify-content-center'>";
-                    if($row['Statut'] == 'En attente'){
+                    if($row['Type'] == "FC"){
+                        if($row['Statut'] == 'En attente'){
                             echo "<a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=afficherModifierFraisClassique&id=".$row['Id']."&vue=saisie'>Modifier</a>
                                     <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimerFrais&Id_ndf=".$_GET['Id_ndf']."' method='post'>
                                         <input type='hidden' name='Id' value='".$row['Id']."'>
@@ -89,14 +90,34 @@ if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["ac
                                     </form>
                                 </td>
                             </tr>";
+                        }
+                        else{
+                            echo"<form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=afficherConsulterFrais&id=".$row['Id']."&vue=saisie' method='post'>
+                                        <input type='submit' class='btn btn-primary mx-auto w-100' value='Consulter' style='max-width : 200px!important;'>
+                                    </form>
+                                </td>
+                            </tr>";
+                        }
                     }
-                    else{
-                        echo"<form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=afficherConsulterFrais&id=".$row['Id']."&vue=saisie' method='post'>
-                                    <input type='submit' class='btn btn-primary mx-auto w-100' value='Consulter' style='max-width : 200px!important;'>
-                                </form>
-                            </td>
-                        </tr>";
+                    if($row['Type'] == "FK"){
+                        if($row['Statut'] == 'En attente'){
+                            echo "<a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=afficherModifierFraisKilo&id=".$row['Id']."&vue=saisie'>Modifier</a>
+                                    <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimerFrais&Id_ndf=".$_GET['Id_ndf']."' method='post'>
+                                        <input type='hidden' name='Id' value='".$row['Id']."'>
+                                        <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
+                                    </form>
+                                </td>
+                            </tr>";
+                        }
+                        else{
+                            echo"<form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=afficherConsulterFrais&id=".$row['Id']."&vue=saisie' method='post'>
+                                        <input type='submit' class='btn btn-primary mx-auto w-100' value='Consulter' style='max-width : 200px!important;'>
+                                    </form>
+                                </td>
+                            </tr>";
+                        }
                     }
+                    
                 }
                 echo "</table>";
             }
@@ -234,26 +255,17 @@ if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFraisCl
 
 //Saisie frais kilométrique
 
+// AJOUTER BOUTON RETOUR // 
+
 if($_GET['action'] == 'saisie_fk' || $_GET['action'] == 'afficherModifierFraisKilo'){
 
 ?>
     <div class="row text-center" style="min-height : 70vh!important;">
 
-        <?php
-            if (isset($result))
-            {
-                echo "<form action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."&vue=saisie' method='post' enctype='multipart/form-data'>";
-            }
-            else {
-                echo "<form action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie' method='post' enctype='multipart/form-data'>";
-            }     
-        ?>
-        <!-- INFOS -->
-            <input type="hidden" name="Statut" value="En attente">
-            <input type="hidden" name="Type" value="FK">
+        
 
         <?php
-            if($_GET["action"] == "saisie_fk" || $_GET["action"] == "afficherModifierFrais")
+            if($_GET["action"] == "saisie_fk" || $_GET["action"] == "afficherModifierFraisKilo")
             { 
         ?>
                 <div class="col-md-6 text-center">
@@ -270,10 +282,39 @@ if($_GET['action'] == 'saisie_fk' || $_GET['action'] == 'afficherModifierFraisKi
                         <button class="btn btn-primary" id="button">Calculer</button>
                         <button class="btn btn-secondary"  onclick="location.reload();">Reset</button>
                     </div>
-                    
+
                     <p class="col-12 mt-3" id="result">
                         Aucun résultat
                     </p>
+
+                    <!-- DEBUT FORM -->
+                    <?php
+                        if (isset($result))
+                        {
+                            echo "<form action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."&vue=saisie' method='post' enctype='multipart/form-data'>";
+                        }
+                        else {
+                            echo "<form action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie' method='post' enctype='multipart/form-data'>";
+                        }     
+                    ?>
+
+                    <!-- INFOS HIDDEN-->
+                    <input id="montantTT" type="hidden" name="Montant" value="">
+                    <input type="hidden" name="Statut" value="En attente">
+                    <input type="hidden" name="Type" value="FK">
+                    
+                    <!-- RECUPERATION MONTANT -->
+                    <script>
+                        document.addEventListener("DOMNodeInserted", function(event) {
+
+                            let p = document.getElementById('montant').innerText;
+                            console.log(p);
+                            document.getElementById('montantTT').innerText = p;
+                        });
+                        
+                    </script>
+                    
+                    
                     <input class="ml-auto col-lg" type="date" name="Date" value="<?php if(isset($result)){ echo $result[0]["Date"];} ?>" required>
                     <textarea class="ml-auto col-lg mt-3" type="text-area" name="Detail" value=" "></textarea>
                 </div>
