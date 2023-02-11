@@ -33,7 +33,12 @@
             if(isset($_SESSION['login']) && $_SESSION['Admin'] == 1){
                 echo'<ul class="navbar-nav ml-auto">
                 <li class="nav-item ml-auto">
-                    <a href="#" class="nav-link p-3" style="color: #1A4087;">
+                    <a href="index.php?ctl=gestionnaire&action=profilAdmin" class="nav-link p-3" style="color: #1A4087;">
+                        <h3>Accueil</h3>
+                    </a>
+                </li>
+                <li class="nav-item ml-auto">
+                    <a href="index.php?ctl=gestionnaire&action=historiqueAdmin" class="nav-link p-3" style="color: #1A4087;">
                         <h3>Historique</h3>
                     </a>
                 </li>
