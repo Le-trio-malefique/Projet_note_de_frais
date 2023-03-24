@@ -85,9 +85,13 @@ if($_GET['action'] == 'listeFrais'){
                                 <td class='p-3'>
                                     <p>".$row['Statut']."</p>
                                 </td>
-                                <td class='p-3 d-flex-lg justify-content-center'>
-                                    <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?vue=1&ctl=notedefrais&action=afficherConsulterFrais&id=".$row['Id']."'>Consulter</a>
-                                </td>
+                                <td class='p-3 d-flex-lg justify-content-center'>";
+                                    if ($row['Type'] == "FC") {
+                                        echo"<a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?vue=1&ctl=notedefrais&action=afficherConsulterFraisClassique&id=".$row['Id']."'>Consulter</a>";
+                                    }else{
+                                        echo"<a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?vue=1&ctl=notedefrais&action=afficherConsulterFraisKilo&id=".$row['Id']."'>Consulter</a>";
+                                    }
+                                "</td>
                             </tr>";
                 }
                 echo "</table>";
@@ -104,8 +108,8 @@ if($_GET['action'] == 'listeFrais'){
 </div>';
 }
 
-
-if($_GET['action'] == 'afficherConsulterFrais'){
+// CONSULTER FRAIS CLASSIQUES
+if($_GET['action'] == 'afficherConsulterFraisClassique'){
 
     ?>
     
