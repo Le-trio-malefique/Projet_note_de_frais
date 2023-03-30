@@ -4,11 +4,12 @@
         <!-- RETOUR -->
         <div class="row pt-4 m-0">
             <div class="col-md-6 text-center">
-                <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+                <a type="button" href="index.php?ctl=notedefrais&action=lister&vue=saisie&TypeNdf=0" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</a>
             </div>
         </div>';
     } 
 ?>
+
 <!-- CARD NEW NOTE DE FRAIS -->
 <div class="row w-100 mx-auto d-flex justify-content-center mt-3">
     <!-- CARD BOX -->
