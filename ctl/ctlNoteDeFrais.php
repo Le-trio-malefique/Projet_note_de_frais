@@ -102,6 +102,7 @@ switch($action){
         include 'vue/vueSaisie/v_ndf.php';
     break;
 
+    //  DEBUT MODIFIER
     case 'afficherModifierFraisClassique':
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
         include 'vue/vueSaisie/v_ndf.php';
@@ -111,12 +112,20 @@ switch($action){
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
         include 'vue/vueSaisie/v_ndf.php';
     break;
+    //  FIN MODIFIER
 
-    case 'afficherConsulterFraisKilo':
+    // DEBUT CONSULTER
+    case 'afficherConsulterFraisClassique':
         $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
         include 'vue/vueSaisie/v_historique.php';
     break;
     
+    case 'afficherConsulterFraisKilo':
+        $result = DbNoteDeFrais::afficherModifierFrais($_GET['id']);
+        include 'vue/vueSaisie/v_historique.php';
+    break;
+    // FIN CONSULTER
+
     case 'modifierFrais':
         //ajout action de modification
 
