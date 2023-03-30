@@ -112,11 +112,17 @@ if($_GET['action'] == 'listeFrais'){
 if($_GET['action'] == 'afficherConsulterFraisClassique'){
 
     ?>
-    
+    <!-- BUTTON RETOUR -->
+    <div class="row pt-4 m-0">
+        <div class="col-md-6 text-center">
+            <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+        </div>
+    </div>
+
     <!-- CARD NEW NOTE DE FRAIS -->
-    <div class="row w-100 mx-auto d-flex justify-content-center mt-3" style="min-height : 100vh!important;">
+    <div class="row w-100 mx-auto d-flex justify-content-center" style="min-height : 100vh!important;">
         <!-- CARD BOX -->
-        <div class="col-md-7 border rounded shadow my-md-5">
+        <div class="col-md-7 border rounded shadow my-md-3 my-2">
             <!-- TITRE -->
             <div class="row border" style="min-height : 11vh!important;">
                 <h4 class="text-left my-auto p-2 ml-3">Note de frais / Frais / Détails</h4>

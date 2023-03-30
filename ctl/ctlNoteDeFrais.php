@@ -39,13 +39,7 @@ switch($action){
     */
     case 'newNote':
         DbNoteDeFrais::newNote($_SESSION['id']);
-        $valid_ndf = DbNoteDeFrais::list_ndf(0);
-
-        // Function get_info_ndf
-        function get_info_ndf($id_ndf){
-            return DbNoteDeFrais::lister($id_ndf);
-        }
-        include 'vue/vueSaisie/v_ndf.php';
+        header('Location: index.php?ctl=notedefrais&action=lister&vue=saisie&TypeNdf=0');
     break;
 
     /** 

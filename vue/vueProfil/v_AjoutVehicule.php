@@ -1,13 +1,15 @@
-<!-- RETOUR -->
-<div class="pt-3 pl-5">
-    <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+<!-- BUTTON RETOUR -->
+<div class="row pt-4 m-0">
+    <div class="col-md-6 text-center">
+        <button type="button" onclick="history.back()" class="btn btn-link"><i class="bi bi-arrow-left-circle-fill"></i> Retour</button>
+    </div>
 </div>
 
 <!-- FORMULAIRE MODIFIER -->
 <?php if (isset($_SESSION['vehicule'])) {?>
 
 <div class="row w-100 mx-auto d-flex justify-content-center" style="min-height: 100vh!important">
-    <div class="col-md-7 border rounded shadow my-md-5">
+    <div class="col-md-7 border rounded shadow my-md-3 my-2">
         <div class="row border" style="min-height: 11vh!important">
             <h4 class="text-left my-auto p-2 ml-3">Modifier un véhicule</h4>
         </div>

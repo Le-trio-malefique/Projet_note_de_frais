@@ -15,7 +15,7 @@
     <div class="col-md-10 border rounded shadow my-md-2">
         <!-- TITRE -->
         <div class="row border" style="min-height : 11vh!important;">
-            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';} if($_GET['action'] == 'saisie_fk'){ echo'Frais Kilometriques';}?></h4>
+            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister' or $_GET['action'] == 'newNote' or $_GET['action'] == 'supprimer'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';} if($_GET['action'] == 'saisie_fk'){ echo'Frais Kilometriques';}?></h4>
         </div>
 
         
