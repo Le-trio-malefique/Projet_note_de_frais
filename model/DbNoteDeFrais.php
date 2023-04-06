@@ -59,9 +59,9 @@ class DbNoteDeFrais{
      */
 
 
-    public static function newNote($idUser)
+    public static function newNote($idUser,$nom)
 	{
-        $sql = "INSERT INTO `note_de_frais` (`Date`, `Mission`, `Id_Utilisateur`) VALUES (NOW(), NULL, '".$idUser."')";
+        $sql = "INSERT INTO `note_de_frais` (`Date`, `Mission`, `Id_Utilisateur`) VALUES (NOW(), '".$nom."', '".$idUser."')";
 		connectPdo::getObjPdo()->exec($sql);
     }
 

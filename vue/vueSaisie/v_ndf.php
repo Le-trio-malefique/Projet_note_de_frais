@@ -15,8 +15,37 @@
     <!-- CARD BOX -->
     <div class="col-md-10 border rounded shadow my-md-2">
         <!-- TITRE -->
-        <div class="row border" style="min-height : 11vh!important;">
-            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister' or $_GET['action'] == 'newNote' or $_GET['action'] == 'supprimer'){ echo'Note de frais';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';} if($_GET['action'] == 'saisie_fk'){ echo'Frais Kilometriques';}?></h4>
+        <div class="row border d-flex justify-content-between" style="min-height : 11vh!important;">
+            <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister' or $_GET['action'] == 'newNote' or $_GET['action'] == 'supprimer'){ echo'Note de frais</h4><a class="p-3 my-auto"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i> &nbsp Créer une nouvelle note de frais</button></a>';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';} if($_GET['action'] == 'saisie_fk'){ echo'Frais Kilometriques';}?></h4>
+        </div>
+
+        <!-- <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=newNote&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Créer une nouvelle note de frais</button></a> -->
+
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nouvelle note de frais</h5>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form class="text-center" action="index.php?ctl=notedefrais&action=newNote&vue=saisie" method="POST">
+                            <h5  class="mt-3 mb-1">Nom de mission :</h5><br>
+                            <input name="nom" type="text" class="mb-3">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quitter</button>
+                        <input type="submit" class="btn btn-primary" value="Créer"></button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
         
@@ -48,7 +77,7 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
                                     </td>
                                 </tr>";
                     }
-                    echo "</table>";
+                    echo "</table><br>";
                 }
                 else{
                     echo '<h1>
@@ -59,7 +88,7 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
                 </div>
             </div>
             <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=newNote&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée une nouvelle note de frais</button></a>
+                
             </div>
         </div>
     </div>';
