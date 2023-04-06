@@ -11,9 +11,9 @@
 ?>
 
 <!-- CARD NEW NOTE DE FRAIS -->
-<div class="row w-100 mx-auto d-flex justify-content-center mt-3">
+<div class="row w-100 mx-auto d-flex justify-content-center my-3">
     <!-- CARD BOX -->
-    <div class="col-md-10 border rounded shadow my-md-2">
+    <div class="col-md-10 border rounded shadow my-md-2 mb-2">
         <!-- TITRE -->
         <div class="row border d-flex justify-content-between" style="min-height : 11vh!important;">
             <h4 class="text-left my-auto p-2 ml-3"><?php if($_GET['action'] == 'lister' or $_GET['action'] == 'newNote' or $_GET['action'] == 'supprimer'){ echo'Note de frais</h4><a class="p-3 my-auto"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i> &nbsp Créer une nouvelle note de frais</button></a>';} if($_GET['action'] == 'listeFrais'){ echo 'Note de frais / Frais';} if($_GET['action'] == 'saisie_fk'){ echo'Frais Kilometriques';}?></h4>
@@ -87,9 +87,7 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
             echo'
                 </div>
             </div>
-            <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=newNote&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Créer une nouvelle note de frais</button></a>
-            </div>
+            
         </div>
     </div>';
 }
