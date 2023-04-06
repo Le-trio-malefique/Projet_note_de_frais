@@ -88,7 +88,7 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
                 </div>
             </div>
             <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-                
+                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=newNote&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Créer une nouvelle note de frais</button></a>
             </div>
         </div>
     </div>';
