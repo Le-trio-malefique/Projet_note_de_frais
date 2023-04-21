@@ -34,8 +34,15 @@
                     <div class="modal-body">
 
                         <form class="text-center" action="index.php?ctl=notedefrais&action=newNote&vue=saisie" method="POST">
+
                             <h5  class="mt-3 mb-1">Nom de mission :</h5><br>
-                            <input name="nom" type="text" class="mb-3">
+                            <input name="nom" type="text" class="mb-3" required>
+
+                            <h5  class="mt-3 mb-1">Date de debut :</h5><br>
+                            <input name="dateDebut" type="date" class="mb-3" min="2000-01-01" onchange="setDateDebut(event)" required>
+
+                            <h5  class="mt-3 mb-1">Date de fin:</h5><br>
+                            <input name="dateFin" type="date" class="mb-3" min="2000-01-01" onchange="setDateDebut(event)" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quitter</button>
@@ -48,7 +55,28 @@
             </div>
         </div>
 
-        
+        <script type="text/javascript">
+
+            var dateDebut
+            var datefin
+
+            function setDateDebut(e) {
+                dateDebut = e
+            }
+            function setDateFin(a) {
+                dateDebut = a
+            }
+
+            
+            if(dateFin != null && dateDebut != null){
+
+                if(dateFin < dateDebut){
+                    alert("error");
+                }
+
+            }
+            
+        </script>
 <?php
 
 //Liste note de frais
@@ -65,11 +93,14 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
                                     <td class='p-3'>
                                         ".$ndf['Mission']."
                                     </td>
-                                    <td class='p-3'>
-                                        ".$ndf['Date']."
+                                    <td class='p-3' id='dateDebut'>
+                                        Date debut : ".$ndf['Date']."
+                                    </td>
+                                    <td class='p-3' id='dateFin'>
+                                        Date fin : ".$ndf['dateFin']."
                                     </td>
                                     <td class='p-3 d-flex-lg justify-content-center'>
-                                        <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=listeFrais&Id_ndf=".$ndf['Id_ndf']."&vue=saisie'>Saisir des frais</a>
+                                        <a class='btn btn-primary mx-auto w-100' style='max-width : 200px!important;' href='index.php?ctl=notedefrais&action=listeFrais&Id_ndf=".$ndf['Id_ndf']."&vue=saisie&dateDebut=".$ndf['Date']."&dateFin=".$ndf['dateFin']."'>Saisir des frais</a>
                                         <form class='mt-2 p-0' action='index.php?ctl=notedefrais&action=supprimer' method='post'>
                                             <input type='hidden' name='idNdf' value='".$ndf['Id_ndf']."'>
                                             <input type='submit' class='btn btn-danger mx-auto w-100' value='Suprimer' style='max-width : 200px!important;'>
@@ -89,7 +120,10 @@ if($_GET['action'] == 'lister' || $_GET['action'] == "newNote" || $_GET['action'
             </div>
             
         </div>
-    </div>';
+    </div>
+    
+    
+    ';
 }
 
 //Liste frais
@@ -164,7 +198,7 @@ if($_GET['action'] == 'listeFrais' || $_GET['action'] == "newFrais" || $_GET["ac
                 </div>
             </div>
             <div class="row border d-flex justify-content-around text-center" style="min-height : 11vh!important;">
-                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fc&Id_ndf='.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais classique</button></a>
+                <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fc&Id_ndf='.$_GET["Id_ndf"].'&vue=saisie&dateDebut='.$_GET["dateDebut"].'&dateFin='.$_GET["dateFin"].'"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais classique</button></a>
                 <a class="p-3 my-auto" href="index.php?ctl=notedefrais&action=saisie_fk&Id_ndf='.$_GET["Id_ndf"].'&vue=saisie"><button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Crée un frais kilométrique</button></a>
             </div>
         </div>
@@ -182,7 +216,7 @@ if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFraisCl
                     echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=modifierFrais&Id_ligne=".$result[0]['Id']."&vue=saisie' method='post' enctype='multipart/form-data'>";
                 }
                 else {
-                    echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie' method='post' enctype='multipart/form-data'>";
+                    echo "<form class='row justify-content-center d-flex' action='index.php?ctl=notedefrais&action=newFrais&Id_ndf=".$_GET['Id_ndf']."&vue=saisie&dateDebut=".$_GET['dateDebut']."&dateFin=".$_GET['dateFin']."' method='post' enctype='multipart/form-data'>";
                 }
 
                     echo '
@@ -201,9 +235,15 @@ if($_GET['action'] == 'saisie_fc' || $_GET['action'] == 'afficherModifierFraisCl
                     </select>
                 </div>
                 <div class="row d-flex form-control mt-5 mx-auto">
-                    <label class="text-left col-lg p-0" for="date">Date</label>
-                    <input class="ml-auto col-lg" type="date" name="Date" value="'; if(isset($result)){ echo $result[0]["Date"];} echo'" required>
+                    <label class="text-left col-lg p-0" for="date">Date Debut</label>
+                    <input class="ml-auto col-lg" type="date" name="Date" value="'; if(isset($result)){ echo $result[0]["Date"];} else{ echo '"min="'.$_GET['dateDebut'].'" max="'.$_GET['dateFin'].'"'; } echo'" required>
                 </div>
+
+                <div class="row d-flex form-control mt-5 mx-auto">
+                    <label class="text-left col-lg p-0" for="date">Date Fin</label>
+                    <input class="ml-auto col-lg" type="date" name="dateFin" value="'; if(isset($result)){ echo $result[0]["Date"];} else{ echo '"min="'.$_GET['dateDebut'].'" max="'.$_GET['dateFin'].'"'; } echo'" required>
+                </div>
+
                 <div class="row d-flex form-control mt-5 mx-auto mb-5">
                     <label class="text-left col-lg p-0" for="montant">Montant </label>
                     <input class="ml-auto col-lg" type="number" name="Montant" placeholder="€" value="'; if(isset($result)){ echo $result[0]["Montant"];} echo '" required>

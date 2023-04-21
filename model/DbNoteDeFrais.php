@@ -59,15 +59,15 @@ class DbNoteDeFrais{
      */
 
 
-    public static function newNote($idUser,$nom)
+    public static function newNote($idUser,$nom,$dateDebut, $DateFin)
 	{
-        $sql = "INSERT INTO `note_de_frais` (`Date`, `Mission`, `Id_Utilisateur`) VALUES (NOW(), '".$nom."', '".$idUser."')";
+        $sql = "INSERT INTO `note_de_frais` (`dateFin`, `Date`, `Mission`, `Id_Utilisateur`) VALUES ('".$DateFin."', '".$dateDebut."' ,'".$nom."', '".$idUser."')";
 		connectPdo::getObjPdo()->exec($sql);
     }
 
-    public static function newFrais($Montant, $justificatif, $id_ndf, $Statut, $Type, $Detail, $Date)
+    public static function newFrais($Montant, $justificatif, $id_ndf, $Statut, $Type, $Detail, $Date, $dateFin)
     {
-        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`) VALUES (NULL,'$Montant', '".$id_ndf."_".$Detail.".".(pathinfo($_FILES['Justificatif']['name']))['extension']."', $id_ndf, '$Statut', '$Type', '$Detail', '$Date')";
+        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`, `dateFin`) VALUES (NULL,'$Montant', '".$id_ndf."_".$Detail.".".(pathinfo($_FILES['Justificatif']['name']))['extension']."', $id_ndf, '$Statut', '$Type', '$Detail', '$Date', '$dateFin')";
 		connectPdo::getObjPdo()->exec($sql);
         
         // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur

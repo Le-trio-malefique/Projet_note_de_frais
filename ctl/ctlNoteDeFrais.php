@@ -38,7 +38,7 @@ switch($action){
      * @return array Liste des notes de frais
     */
     case 'newNote':
-        DbNoteDeFrais::newNote($_SESSION['id'], $_POST['nom']);
+        DbNoteDeFrais::newNote($_SESSION['id'], $_POST['nom'], $_POST['dateDebut'], $_POST['dateFin']);
         header('Location: index.php?ctl=notedefrais&action=lister&vue=saisie&TypeNdf=0');
     break;
 
@@ -83,7 +83,7 @@ switch($action){
      * Creation d'un nouveau frais Dans une note de frais
      */
     case 'newFrais':
-        DbNoteDeFrais::newFrais($_POST['Montant'],$_FILES['Justificatif'],$_GET['Id_ndf'],$_POST['Statut'], $_POST['Type'], $_POST['Detail'], $_POST['Date']);
+        DbNoteDeFrais::newFrais($_POST['Montant'],$_FILES['Justificatif'],$_GET['Id_ndf'],$_POST['Statut'], $_POST['Type'], $_POST['Detail'], $_POST['Date'], $_POST['dateFin']);
         $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
         include 'vue/vueSaisie/v_ndf.php';
     break;
