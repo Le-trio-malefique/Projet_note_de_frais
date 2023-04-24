@@ -61,18 +61,18 @@ class DbNoteDeFrais
      */
 
 
-    public static function newNote($idUser, $nom, $dd, $df)
+    public static function newNote($idUser, $nom, $dd, $df,$dateDebut, $DateFin)
     {
-        $sql = "INSERT INTO `note_de_frais` (`Date`, `Mission`, `Id_Utilisateur`, `date_debut`, `date_fin`) VALUES (NOW(), '" . $nom . "', '" . $idUser . "', '" . $dd . "', '" . $df . "')";
+        $sql = "INSERT INTO `note_de_frais` (`dateFin`, `Date`, `Mission`, `Id_Utilisateur`, `date_debut`, `date_fin`) VALUES ('".$DateFin."', '" . $dateDebut."' ,'".$nom . "', '" . $idUser . "', '" . $dd . "', '" . $df . "')";
         // echo $sql;	
         connectPdo::getObjPdo()->exec($sql);
     }
 
-    public static function newFrais($Montant, $justificatif, $id_ndf, $Statut, $Type, $Detail, $Date)
+    public static function newFrais($Montant, $justificatif, $id_ndf, $Statut, $Type, $Detail, $Date, $dateFin)
     {
-        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`) VALUES (NULL,'$Montant', '" . $id_ndf . "_" . $Detail . "." . (pathinfo($_FILES['Justificatif']['name']))['extension'] . "', $id_ndf, '$Statut', '$Type', '$Detail', '$Date')";
-        connectPdo::getObjPdo()->exec($sql);
-
+        $sql = "INSERT INTO `ligne` (`Id`, `Montant`, `Justificatif`, `Id_ndf`, `Statut`, `Type`, `Detail`, `Date`) VALUES (NULL,'$Montant', '".$id_ndf."_".$Detail.".".(pathinfo($_FILES['Justificatif']['name']))['extension']."', $id_ndf, '$Statut', '$Type', '$Detail', '$Date')";
+		connectPdo::getObjPdo()->exec($sql);
+        
         // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
         if (isset($_FILES['Justificatif']) && $_FILES['Justificatif']['error'] == 0) {
             // Testons si le fichier n'est pas trop gros
