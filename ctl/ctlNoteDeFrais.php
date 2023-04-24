@@ -38,7 +38,7 @@ switch($action){
      * @return array Liste des notes de frais
     */
     case 'newNote':
-        DbNoteDeFrais::newNote($_SESSION['id'], $_POST['nom']);
+        DbNoteDeFrais::newNote($_SESSION['id'], $_POST['nom'], $_POST['date_debut'], $_POST['date_fin']);
         header('Location: index.php?ctl=notedefrais&action=lister&vue=saisie&TypeNdf=0');
     break;
 
