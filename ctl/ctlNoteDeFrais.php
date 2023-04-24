@@ -64,7 +64,7 @@ switch($action){
     case 'listeFrais':
         $result = DbNoteDeFrais::listeFrais($_GET['Id_ndf']);
         if (isset($_GET['vue']) && $_GET['vue'] == "historique") {
-            include 'vue/vueSaisie/v_Historique.php';
+            include 'vue/vueSaisie/v_historique.php';
         }
         if (isset($_GET['vue']) && $_GET['vue'] == "saisie"){
             include 'vue/vueSaisie/v_ndf.php';
